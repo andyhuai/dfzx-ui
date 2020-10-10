@@ -1,16 +1,16 @@
-import Vue from "vue";
+import Vue from 'vue'
 
-let cacheKey = "cacheTo";
-let $router = { beforeEach: () => {} };
+let cacheKey = 'cacheTo'
+let $router = { beforeEach: () => {} }
 const state = Vue.observable({
   caches: []
-});
+})
 const clearCache = () => {
   if (state.caches.length > 0) {
-    state.caches = [];
+    state.caches = []
   }
-};
-const addCache = name => state.caches.push(name);
+}
+const addCache = name => state.caches.push(name)
 
 const beforeEach = () => {
   $router.beforeEach((to, from, next) => {
@@ -25,52 +25,52 @@ const beforeEach = () => {
     // 4. 旧路由是类列表页
     //     若`to`不在`from`的配置中，清空缓存
 
-    const toName = to.name;
-    const toCacheTo = (to.meta || {})[cacheKey];
-    const isToPageLikeList = toCacheTo && toCacheTo.length > 0;
-    const fromName = from.name;
-    const fromCacheTo = (from.meta || {})[cacheKey];
-    const isFromPageLikeList = fromCacheTo && fromCacheTo.length > 0;
+    const toName = to.name
+    const toCacheTo = (to.meta || {})[cacheKey]
+    const isToPageLikeList = toCacheTo && toCacheTo.length > 0
+    const fromName = from.name
+    const fromCacheTo = (from.meta || {})[cacheKey]
+    const isFromPageLikeList = fromCacheTo && fromCacheTo.length > 0
 
     if (!isToPageLikeList && !isFromPageLikeList) {
-      clearCache();
+      clearCache()
     } else if (isToPageLikeList && isFromPageLikeList) {
       if (fromCacheTo.indexOf(toName) === -1) {
-        clearCache();
+        clearCache()
       }
-      addCache(toName);
+      addCache(toName)
     } else if (isToPageLikeList) {
       if (toCacheTo.indexOf(fromName) === -1) {
-        clearCache();
-        addCache(toName);
+        clearCache()
+        addCache(toName)
       }
     } else if (isFromPageLikeList) {
       if (fromCacheTo.indexOf(toName) === -1) {
-        clearCache();
+        clearCache()
       }
     }
-    next();
-  });
-};
+    next()
+  })
+}
 const VsKeepAlive = {
-  install(Vue, options = { key: "", router: "" }) {
-    const { key = "cacheTo", router } = options;
+  install(Vue, options = { key: '', router: '' }) {
+    const { key = 'cacheTo', router } = options
 
     if (key) {
-      cacheKey = key;
-      $router = router;
-      beforeEach();
+      cacheKey = key
+      $router = router
+      beforeEach()
     }
 
     const component = {
-      name: "VsKeepAlive",
+      name: 'VsKeepAlive',
       functional: true,
       render(h, { children }) {
-        return h("keep-alive", { props: { include: state.caches } }, children);
+        return h('keep-alive', { props: { include: state.caches }}, children)
       }
-    };
+    }
 
-    Vue.component("VsKeepAlive", component);
+    Vue.component('VsKeepAlive', component)
   }
-};
-export default VsKeepAlive;
+}
+export default VsKeepAlive

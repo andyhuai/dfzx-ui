@@ -30,12 +30,17 @@
     </div>
     <div class="row">
       <vs-button plain>字体</vs-button>
-      <vs-button icon="vs-icon-check" circle plain type="primary"></vs-button>
-      <vs-button icon="vs-icon-message" circle plain type="success"></vs-button>
-      <vs-button icon="vs-icon-search" circle plain type="info"></vs-button>
-      <vs-button icon="vs-icon-star-off" plain type="warning"
-        >字体图标</vs-button
-      >
+      <vs-button icon="vs-icon-check" circle plain type="primary" />
+      <vs-button icon="vs-icon-message" circle plain type="success" />
+      <vs-button icon="vs-icon-search" circle plain type="info" />
+      <vs-button
+        icon="vs-icon-star-off"
+        plain
+        type="warning"
+      >字体图标</vs-button>
+    </div>
+    <div>
+      <df-button>我是DFbutton</df-button>
     </div>
   </div>
 </template>
@@ -44,11 +49,11 @@
 export default {
   methods: {
     jump(e) {
-      console.log(e);
-      alert(123);
+      console.log(e)
+      alert(123)
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

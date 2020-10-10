@@ -1,27 +1,13 @@
 <template>
-  <button
-    class="vs-button"
-    :disabled="disabled"
-    :class="[
-      type ? `vs-button--${type}` : '',
-      buttonSize ? `vs-button--${buttonSize}` : '',
-      {
-        'is-plain': plain,
-        'is-round': round,
-        'is-circle': circle,
-        'is-disabled': disabled
-      }
-    ]"
-    @click="handleClick"
-  >
+  <el-button :type="type">
     <i v-if="icon" :class="icon" />
     <!-- 如果没有传入插槽的时候才显示 -->
     <span v-if="$slots.default"><slot /></span>
-  </button>
+  </el-button>
 </template>
 <script>
 export default {
-  name: 'VsButton',
+  name: 'DfButton',
   props: {
     size: String,
     type: {

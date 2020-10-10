@@ -5,13 +5,13 @@
 </template>
 
 <script>
-import VsButton from "./TestButton";
+import VsButton from './TestButton'
 export default {
-  name: "app",
+  name: 'App',
   components: {
     VsButton
   }
-};
+}
 </script>
 
 <style lang="scss"></style>
