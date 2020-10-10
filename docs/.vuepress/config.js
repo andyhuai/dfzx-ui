@@ -1,6 +1,6 @@
 module.exports = {
-  base: '/vase-ui/',
-  title: 'Vase UI',
+  base: '/dfzx-ui/',
+  title: 'dfzx UI',
   description: 'Inspiration from heian vase',
   head: [['link', { rel: 'icon', href: '/favicon.ico' }]],
   themeConfig: {
