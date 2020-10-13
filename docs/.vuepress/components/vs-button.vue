@@ -9,10 +9,7 @@
     <vs-button type="warning">warning</vs-button>
     <vs-button type="danger">danger</vs-button>
 
-    <!-- <template v-slot:code> -->
     <pre v-highlightjs><code class="vue">{{code1}}</code></pre>
-    <!-- </template> -->
-    <!-- </vs-card> -->
   </div>
 </template>
 
