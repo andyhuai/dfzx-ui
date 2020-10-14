@@ -1,6 +1,4 @@
 import DfModal from './df-modal/DfModal'
-import KeepAlive from './keep-alive'
-
 import './fonts/font.scss'
 // 存储组件列表
 const components = [DfModal]
@@ -16,16 +14,16 @@ const install = function(Vue, options = { key: '', router: {}}) {
       Vue.component(item.name, item)
     }
   })
-  Vue.use(KeepAlive, { key, router })
+  Vue.use({ key, router })
 }
 
 // 判断是否是直接引入文件
 if (typeof window !== 'undefined' && window.Vue) {
   install(window.Vue)
 }
-export { DfModal, KeepAlive }
+export { DfModal }
 export default {
   // 导出的对象必须具有 install，才能被 Vue.use() 方法安装
-  version: '0.3.4',
+  version: '0.0.2',
   install
 }

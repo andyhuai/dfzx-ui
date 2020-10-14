@@ -100,7 +100,7 @@
                         describe: '弹窗宽度',
                         type: 'String',
                         optionValue: '例如: 500px,',
-                        defaultValue: '700px'
+                        defaultValue: '600px'
                     }
                 ],
                 methodData: [

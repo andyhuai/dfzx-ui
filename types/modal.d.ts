@@ -1,26 +1,25 @@
-import { DfzxUIComponent, DfzxUIComponentSize } from './component'
+import { DfzxUIComponent } from './component'
 
-/** Button type */
-export type ButtonType = 'primary' | 'success' | 'warning' | 'danger' | 'info'
-
-/** Button Component */
+/** DfModal Component */
 export declare class DfModal extends DfzxUIComponent {
-    /** Button size */
+    /** Modal title */
     title: string
 
-    /** Determine whether it's a plain button */
+    /** 是否显示 */
     visible: boolean
 
-    /** Determine whether it's a round button */
+    /** 宽度 */
     width: string
 
-    /** Determine whether it's loading */
+    /** 是否显示确定按钮 */
     'show-confirm-button': boolean
 
-    /** Disable the button */
+    /** 是否显示取消按钮 */
     'show-cancel-button': boolean
 
-    /** Button icon, accepts an icon name of Element icon component */
+    /** 取消按钮文字t */
     'cancel-button-label': string
+
+    /** 确定按钮文字 **/
     'confirm-button-label': string
 }
