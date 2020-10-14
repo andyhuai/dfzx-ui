@@ -2,3 +2,4 @@
 /yarn.lock
 docs/.vuepress/dist/
 /.idea
+.DS_Store
