@@ -1,8 +1,8 @@
 ---
 home: true
 navbar: false
-heroImage:
-actionText: Get Started →
+heroImage: /logo.png
+actionText: 快速开始 →
 actionLink: views/guide/install.md
 footer: Inspired by Huai
 ---

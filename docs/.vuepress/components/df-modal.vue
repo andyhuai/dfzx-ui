@@ -31,7 +31,8 @@
     import VueHighlightJS from 'vue-highlightjs';
     import DemoCode from "./demo-code";
     import DemoApi from "./demo-api";
-    import { code} from './code'
+    import {code} from './code'
+
     Vue.use(VueHighlightJS);
 
     export default {
@@ -64,37 +65,37 @@
                         type: 'Boolean',
                         optionValue: 'true, false',
                         defaultValue: '-'
-                    },{
+                    }, {
                         params: 'title',
                         describe: '弹窗标题',
                         type: 'String',
                         optionValue: '-',
                         defaultValue: '-'
-                    },{
+                    }, {
                         params: 'show-confirm-button',
                         describe: '是否显示确定按钮',
                         type: 'Boolean',
                         optionValue: 'true, false',
                         defaultValue: 'true'
-                    },{
+                    }, {
                         params: 'show-cancel-button',
                         describe: '是否显示取消按钮',
                         type: 'Boolean',
                         optionValue: 'true, false',
                         defaultValue: 'true'
-                    },{
+                    }, {
                         params: 'cancel-button-label',
                         describe: '取消按钮文字',
                         type: 'String',
                         optionValue: '-',
                         defaultValue: '取消'
-                    },{
+                    }, {
                         params: 'confirm-button-label',
                         describe: '确定按钮文字',
                         type: 'String',
                         optionValue: '-',
                         defaultValue: '确定'
-                    },{
+                    }, {
                         params: 'width',
                         describe: '弹窗宽度',
                         type: 'String',
@@ -107,11 +108,11 @@
                         params: 'onOK',
                         describe: '点击确定按钮回调',
                         cbparams: '()=>{}',
-                    },{
+                    }, {
                         params: 'onCancel',
                         describe: '点击取消按钮回调',
                         cbparams: '()=>{}',
-                    },{
+                    }, {
                         params: 'closed',
                         describe: '弹窗完全关闭回调',
                         cbparams: '()=>{}',

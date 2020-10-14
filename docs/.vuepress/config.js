@@ -1,12 +1,12 @@
 module.exports = {
   base: '/dfzx-ui/',
-  title: 'dfzx UI',
-  description: 'Inspiration from heian vase',
+  title: 'DFZX UI',
+  description: 'Inspiration from DFZX',
   head: [['link', { rel: 'icon', href: '/favicon.ico' }]],
   themeConfig: {
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Github', link: 'https://github.com/JohnYu588/vase-ui/' },
+      { text: 'Github', link: 'https://github.com/andyhuai/dfzx-ui' },
     ],
     sidebar: [
       {
