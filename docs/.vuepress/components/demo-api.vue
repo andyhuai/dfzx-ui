@@ -94,5 +94,9 @@
         .el-table__body, .el-table__footer, .el-table__header {
             border-collapse: collapse;
         }
+        thead {
+            color: #409eff !important;
+            font-weight: bolder;
+        }
     }
 </style>

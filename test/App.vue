@@ -1,15 +1,15 @@
 <template>
   <div id="app">
-    <vs-button>测试一下自动化111</vs-button>
-  </div>
+    <test-modal /></div>
 </template>
 
 <script>
-import VsButton from './TestButton'
+
+import TestModal from './TestModal'
 export default {
   name: 'App',
   components: {
-    VsButton
+    TestModal
   }
 }
 </script>

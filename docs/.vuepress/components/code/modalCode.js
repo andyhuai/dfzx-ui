@@ -1,4 +1,4 @@
-export const code = `
+export const modalCode = `
     <template>
         <div>
             <df-modal

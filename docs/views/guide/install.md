@@ -5,9 +5,5 @@ title: '安装'
 # 安装
 
 ```
-npm i -D dfzx-ui
+npm i dfzx-ui
 ```
-
-<ClientOnly>
-  <!-- <sakura-gif/> -->
-</ClientOnly>

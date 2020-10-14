@@ -16,7 +16,7 @@
             </df-modal>
             <el-button @click="click">显示弹窗</el-button>
             <pre v-highlightjs slot="codeText" lang="vue">
-                <code class="vue">{{code}}</code>
+                <code class="vue">{{modalCode}}</code>
             </pre>
         </demo-code>
 
@@ -31,7 +31,7 @@
     import VueHighlightJS from 'vue-highlightjs';
     import DemoCode from "./demo-code";
     import DemoApi from "./demo-api";
-    import {code} from './code'
+    import { modalCode } from './code/modalCode'
 
     Vue.use(VueHighlightJS);
 
@@ -119,7 +119,7 @@
                     }
                 ],
                 visible: false,
-                code: code
+                code: modalCode
             }
         }
     }
