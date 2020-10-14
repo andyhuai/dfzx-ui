@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <vs-button>按钮测试</vs-button>
+    <vs-button>测试一下自动化</vs-button>
   </div>
 </template>
 
