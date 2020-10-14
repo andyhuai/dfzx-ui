@@ -1,6 +1,5 @@
 import Vue from 'vue'
-import { VsButton } from './button';
-import { VsKeepAlive } from './keep-alive';
+import { DfModal } from './modal';
 export interface InstallationOptions {
     router: any,
 }
@@ -9,6 +8,5 @@ export const version: string
 
 export function install(vue: typeof Vue, options: InstallationOptions): void
 
-export class Button extends VsButton { }
+export class Modal extends DfModal { }
 
-export class KeepAlive extends VsKeepAlive { }

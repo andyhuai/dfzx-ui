@@ -1,4 +1,4 @@
-export * from './vase-ui'
+export * from './dfzx-ui'
 
-import * as VaseUI from './vase-ui'
-export default VaseUI
+import * as DfzxUI from './dfzx-ui'
+export default DfzxUI

@@ -1,6 +1,6 @@
 {
   "name": "dfzx-ui",
-  "version": "0.3.4",
+  "version": "0.0.2",
   "description": "A Component Library for Vue.js.",
   "private": false,
   "main": "lib/dfzx-ui.common.js",
@@ -10,6 +10,9 @@
     "packages",
     "types"
   ],
+  "publishConfig": {
+    "registry": "http://10.129.16.202:8081/repository/npm-hosted/"
+  },
   "typings": "types/index.d.ts",
   "scripts": {
     "lib": "vue-cli-service build --target lib --name dfzx-ui --dest lib packages/index.js",
@@ -21,7 +24,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:JohnYu588/vase-ui.git"
+    "url": "git@github.com:andyhuai/dfzx-ui.git"
   },
   "author": "Huai",
   "license": "MIT",

@@ -1,28 +1,26 @@
-import { VaseUIComponent, VaseUIComponentSize } from './component'
+import { DfzxUIComponent, DfzxUIComponentSize } from './component'
 
 /** Button type */
 export type ButtonType = 'primary' | 'success' | 'warning' | 'danger' | 'info'
 
 /** Button Component */
-export declare class VsButton extends VaseUIComponent {
+export declare class DfModal extends DfzxUIComponent {
     /** Button size */
-    size: VaseUIComponentSize
-
-    /** Button type */
-    type: ButtonType
+    title: string
 
     /** Determine whether it's a plain button */
-    plain: boolean
+    visible: boolean
 
     /** Determine whether it's a round button */
-    round: boolean
+    width: string
 
     /** Determine whether it's loading */
-    circle: boolean
+    'show-confirm-button': boolean
 
     /** Disable the button */
-    disabled: boolean
+    'show-cancel-button': boolean
 
     /** Button icon, accepts an icon name of Element icon component */
-    icon: string
+    'cancel-button-label': string
+    'confirm-button-label': string
 }
