@@ -6,11 +6,11 @@ title: '快速上手'
 
 ```js
 // 全局注册
-import VaseUI from 'vase-ui';
-Vue.use(VaseUI, { router });
-import 'vase-ui/lib/vase-ui.css';
+import DfUI from 'dfzx-ui';
+Vue.use(DfUI, { router });
+import 'dfzx-ui/lib/dfzx-ui.css';
 // 按需注册
-import { Button, KeepAlive } from 'vase-ui';
+import { Button, KeepAlive } from 'dfzx-ui';
 Vue.use(Button).use(KeepAlive, { router });
 ```
 
@@ -18,7 +18,7 @@ Vue.use(Button).use(KeepAlive, { router });
 // 全局注册
 <template>
   <div id="app">
-    <vs-button type="primary">点击报名</vs-button>
+    <df-button type="primary">点击报名</df-button>
   </div>
 </template>
 
@@ -26,7 +26,3 @@ Vue.use(Button).use(KeepAlive, { router });
 export default {};
 </script>
 ```
-
-<ClientOnly>
-  <!-- <sakura-img/> -->
-</ClientOnly>

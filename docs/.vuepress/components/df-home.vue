@@ -5,7 +5,7 @@
 </template>
 <script>
 export default {
-  name: 'DF-home',
+  name: 'df-home',
 };
 </script>
 <style lang="scss" scoped>

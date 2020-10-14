@@ -4,9 +4,9 @@ navbar: false
 heroImage:
 actionText: Get Started →
 actionLink: views/guide/install.md
-footer: Inspired by Vase
+footer: Inspired by Huai
 ---
 
 <ClientOnly>
-  <vs-home/>
+  <df-home/>
 </ClientOnly>

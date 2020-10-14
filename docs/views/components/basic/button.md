@@ -6,7 +6,7 @@ sidebarDepth: 2
 # 按钮
 
 <ClientOnly>
-  <vs-button/>
+   <vs-button /> 
 <font size=5>Attributes</font>
 | 参数| 说明 | 类型 | 可选值 | 默认值 |
 | :------ | ------ | ------ | ------ | ------ |
@@ -17,3 +17,5 @@ sidebarDepth: 2
 | loading | 显示加载中图标 | boolean |- | false |
 
 </ClientOnly>
+<script>
+</script>
