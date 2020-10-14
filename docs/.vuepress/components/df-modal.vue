@@ -16,7 +16,7 @@
             </df-modal>
             <el-button @click="click">显示弹窗</el-button>
             <pre v-highlightjs slot="codeText" lang="vue">
-                <code class="vue">{{modalCode}}</code>
+                <code class="vue">{{code}}</code>
             </pre>
         </demo-code>
 
