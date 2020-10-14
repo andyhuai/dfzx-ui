@@ -31,11 +31,13 @@ export default {
   props: {
     title: {
       type: String,
-      default: ''
+      default: '',
+      required: true
     },
     visible: {
       type: Boolean,
-      default: false
+      default: false,
+      required: true
     },
     fullscreen: {
       type: Boolean,
