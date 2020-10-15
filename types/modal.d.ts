@@ -22,4 +22,7 @@ export declare class DfModal extends DfzxUIComponent {
 
     /** 确定按钮文字 **/
     'confirm-button-label': string
+
+    /** 确定loading状态 **/
+    'ok-loading': boolean
 }

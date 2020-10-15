@@ -8,6 +8,7 @@
                     cancel-button-label="取消"
                     confirm-button-label="确定"
                     :visible="visible"
+                    :ok-loading="okLoading"
                     @onOK="onOK"
                     @onCancel="onClose"
                     @closed="closed"
@@ -47,6 +48,7 @@
             },
             onOK() {
                 this.$message.info('点击确定')
+                this.okLoading = true
             },
             onClose() {
                 this.$message.info('点击取消')
@@ -54,6 +56,7 @@
             },
             closed() {
                 this.$message.info('弹窗关闭完毕了')
+                this.okLoading = false
             }
         },
         data() {
@@ -101,6 +104,12 @@
                         type: 'String',
                         optionValue: '例如: 500px,',
                         defaultValue: '600px'
+                    }, {
+                        params: 'ok-loading',
+                        describe: '确定按钮loading状态,在点击确定做网络请求时候可用',
+                        type: 'Boolean',
+                        optionValue: 'true, false',
+                        defaultValue: 'false'
                     }
                 ],
                 methodData: [
@@ -119,7 +128,8 @@
                     }
                 ],
                 visible: false,
-                code: modalCode
+                code: modalCode,
+                okLoading: false
             }
         }
     }

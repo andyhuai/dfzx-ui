@@ -8,6 +8,7 @@ export const modalCode = `
                 cancel-button-label="取消"
                 confirm-button-label="确定"
                 :visible="visible"
+                :ok-loading="okLoading"
                 @onOK="onOK"
                 @onCancel="onClose"
                 @closed="closed"
@@ -29,6 +30,7 @@ export const modalCode = `
             },
             onOK(){
                 this.$message.info('点击确定')
+                this.okLoading = true
             },
             onClose(){
                 this.$message.info('点击取消')
@@ -36,11 +38,13 @@ export const modalCode = `
             },
             closed(){
                 this.$message.info('弹窗关闭完毕了')
+                this.okLoading = false
             }
         },
         data() {
             return {
-                visible: false
+                visible: false,
+                okLoading: false
             }
         }
     }
