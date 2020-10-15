@@ -21,31 +21,31 @@ export const modalCode =
     <script>
         import DfModal from "../../../packages/df-modal/DfModal";
         export default {
-        components: {
-            DfModal
-        },
-        methods: {
-            click() {
-                this.visible = true
+            components: {
+                DfModal
             },
-            onOK(){
-                this.$message.info('点击确定')
-                this.okLoading = true
+            methods: {
+                click() {
+                    this.visible = true
+                },
+                onOK(){
+                    this.$message.info('点击确定')
+                    this.okLoading = true
+                },
+                onClose(){
+                    this.$message.info('点击取消')
+                    this.visible = false
+                },
+                closed(){
+                    this.$message.info('弹窗关闭完毕了')
+                    this.okLoading = false
+                }
             },
-            onClose(){
-                this.$message.info('点击取消')
-                this.visible = false
-            },
-            closed(){
-                this.$message.info('弹窗关闭完毕了')
-                this.okLoading = false
-            }
-        },
-        data() {
-            return {
-                visible: false,
-                okLoading: false
+            data() {
+                return {
+                    visible: false,
+                    okLoading: false
+                }
             }
         }
-    }
     </script>`
