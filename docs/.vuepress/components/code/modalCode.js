@@ -1,5 +1,5 @@
-export const modalCode = `
-    <template>
+export const modalCode =
+    `<template>
         <div>
             <df-modal
                 title="标题"
