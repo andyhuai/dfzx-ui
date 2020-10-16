@@ -1,6 +1,6 @@
 {
   "df-modal": {
-    "attributes": ["visible", "width", "title", "ok-loading", "confirm-button-label", "cancel-button-label", "show-cancel-button", "show-confirm-button", "onOK", "onCancel", "closed"],
+    "attributes": ["visible", "width", "title", "ok-loading", "show-close", "confirm-button-label", "cancel-button-label", "show-cancel-button", "show-confirm-button"],
     "defaults": ["width"],
     "description": "通用弹出窗."
   }

@@ -9,6 +9,7 @@
       destroy-on-close
       :fullscreen="fullscreen"
       :top="top"
+      :show-close="showClose"
       @close="onCancel"
       @closed="closed"
     >
@@ -38,6 +39,10 @@ export default {
       type: Boolean,
       default: false,
       required: true
+    },
+    showClose: {
+      type: Boolean,
+      default: true
     },
     fullscreen: {
       type: Boolean,
@@ -75,11 +80,11 @@ export default {
   methods: {
     onOK() {
       // 确定
-      this.$emit('onOK')
+      this.$emit('on-ok')
     },
     onCancel() {
       // 取消
-      this.$emit('onCancel')
+      this.$emit('on-cancel')
     },
     closed() {
       this.$emit('closed')

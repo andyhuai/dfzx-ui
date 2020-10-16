@@ -25,4 +25,7 @@ export declare class DfModal extends DfzxUIComponent {
 
     /** 确定loading状态 **/
     'ok-loading': boolean
+
+    /** 是否显示右上角的关闭按钮 **/
+    'show-close': boolean
 }

@@ -110,15 +110,21 @@
                         type: 'Boolean',
                         optionValue: 'true, false',
                         defaultValue: 'false'
+                    }, {
+                        params: 'show-close',
+                        describe: '是否显示右上角的关闭按钮',
+                        type: 'Boolean',
+                        optionValue: 'true, false',
+                        defaultValue: 'true'
                     }
                 ],
                 methodData: [
                     {
-                        params: 'onOK',
+                        params: 'on-ok',
                         describe: '点击确定按钮回调',
                         cbparams: '()=>{}',
                     }, {
-                        params: 'onCancel',
+                        params: 'on-cancel',
                         describe: '点击取消按钮回调',
                         cbparams: '()=>{}',
                     }, {

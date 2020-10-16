@@ -1,6 +1,6 @@
 <template>
   <div>
-    <df-modal :visible="visible" @onOK="visible = !visible" title="我是标题">
+    <df-modal :visible="visible" title="我是标题" @on-ok="visible = !visible" show-close>
       <div>我是弹窗内容</div>
     </df-modal>
     <el-button @click="visible = !visible">显示弹窗</el-button>

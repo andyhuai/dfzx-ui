@@ -8,6 +8,7 @@
   "disabled": {"type": "boolean"},
   "autofocus": {"type": "boolean"},
   "checked": {"type": "boolean"},
+
   "select": {"type": "method"},
   "blur": {"type": "method"},
   "focus": {"type": "method"},
@@ -18,9 +19,10 @@
   "df-modal/cancel-button-label": {"type": "string", "description": "取消按钮文字"},
   "df-modal/show-cancel-button": {"type": "boolean", "description": "是否显示取消按钮"},
   "df-modal/show-confirm-button": {"type": "boolean", "description": "是否显示确定按钮"},
-  "df-modal/onOK": {"type": "method", "description": "点击确定按钮的回调" },
-  "df-modal/onCancel": {"type": "method", "description": "点击取消按钮的回调"},
+  "df-modal/on-ok": {"type": "method", "description": "点击确定按钮的回调" },
+  "df-modal/on-cancel": {"type": "method", "description": "点击取消按钮的回调"},
   "df-modal/closed": {"type": "method", "description": "弹窗完全关闭的回调"},
+  "df-modal/show-close": {"type": "boolean", "description": "是否显示右上角的关闭按钮"},
 
   "el-date-picker/picker-options": {
     "options": ["shortcuts", "disabledDate", "firstDayOfWeek", "onPick"],
