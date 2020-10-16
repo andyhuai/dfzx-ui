@@ -1,0 +1,29 @@
+{
+  "click": {"type": "method"},
+  "width": {"type": "string"},
+  "title": {"type": "string"},
+
+  "visible": {"type": "boolean", "description": "visibility of Dialog, supports the '.sync' modifier, default: false"},
+  "loading": {"type": "boolean"},
+  "disabled": {"type": "boolean"},
+  "autofocus": {"type": "boolean"},
+  "checked": {"type": "boolean"},
+  "select": {"type": "method"},
+  "blur": {"type": "method"},
+  "focus": {"type": "method"},
+  "method": {"type": "method"},
+
+  "df-modal/ok-loading": {"type": "boolean", "description": "点击确定之后网络请求状态的loading"},
+  "df-modal/confirm-button-label": {"type": "string", "description": "确定按钮文字"},
+  "df-modal/cancel-button-label": {"type": "string", "description": "取消按钮文字"},
+  "df-modal/show-cancel-button": {"type": "boolean", "description": "是否显示取消按钮"},
+  "df-modal/show-confirm-button": {"type": "boolean", "description": "是否显示确定按钮"},
+  "df-modal/onOK": {"type": "method", "description": "点击确定按钮的回调" },
+  "df-modal/onCancel": {"type": "method", "description": "点击取消按钮的回调"},
+  "df-modal/closed": {"type": "method", "description": "弹窗完全关闭的回调"},
+
+  "el-date-picker/picker-options": {
+    "options": ["shortcuts", "disabledDate", "firstDayOfWeek", "onPick"],
+    "description": "additional options, type is object"
+  }
+}

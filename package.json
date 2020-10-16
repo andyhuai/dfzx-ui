@@ -8,8 +8,13 @@
     "lib",
     "src",
     "packages",
-    "types"
+    "types",
+    "vetur"
   ],
+  "vetur": {
+    "tags": "vetur/tags.json",
+    "attributes": "vetur/attributes.json"
+  },
   "publishConfig": {
     "registry": "http://10.129.16.202:8081/repository/npm-hosted/"
   },
