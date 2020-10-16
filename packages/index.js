@@ -24,6 +24,6 @@ if (typeof window !== 'undefined' && window.Vue) {
 export { DfModal }
 export default {
   // 导出的对象必须具有 install，才能被 Vue.use() 方法安装
-  version: '0.0.2',
+  version: '0.0.3',
   install
 }
