@@ -85,6 +85,7 @@ export default {
     onCancel() {
       // 取消
       this.$emit('on-cancel')
+      this.$emit('update:visible', false)
     },
     closed() {
       this.$emit('closed')
