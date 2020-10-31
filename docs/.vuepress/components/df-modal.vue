@@ -99,6 +99,12 @@
                         optionValue: '-',
                         defaultValue: '确定'
                     }, {
+                        params: 'confirm-button-type',
+                        describe: '确定按钮类型',
+                        type: 'String',
+                        optionValue: 'primary / success / warning / danger / info / text',
+                        defaultValue: 'primary'
+                    },{
                         params: 'width',
                         describe: '弹窗宽度',
                         type: 'String',

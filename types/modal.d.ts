@@ -20,6 +20,8 @@ export declare class DfModal extends DfzxUIComponent {
     /** 取消按钮文字t */
     'cancel-button-label': string
 
+    /** 确定按钮类型 */
+    'confirm-button-type': string
     /** 确定按钮文字 **/
     'confirm-button-label': string
 

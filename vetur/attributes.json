@@ -16,6 +16,7 @@
 
   "df-modal/ok-loading": {"type": "boolean", "description": "点击确定之后网络请求状态的loading"},
   "df-modal/confirm-button-label": {"type": "string", "description": "确定按钮文字"},
+  "df-modal/confirm-button-type": {"type": "string", "description": "确定按钮类型:primary/success/warning/danger/info/text"},
   "df-modal/cancel-button-label": {"type": "string", "description": "取消按钮文字"},
   "df-modal/show-cancel-button": {"type": "boolean", "description": "是否显示取消按钮"},
   "df-modal/show-confirm-button": {"type": "boolean", "description": "是否显示确定按钮"},

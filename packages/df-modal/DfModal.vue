@@ -18,7 +18,7 @@
         <el-button v-if="showCancelButton" size="medium" @click="onCancel">
           {{ cancelButtonLabel }}
         </el-button>
-        <el-button v-if="showConfirmButton" :loading="okLoading" type="primary" size="medium" class="btn-ok" @click="onOK">
+        <el-button v-if="showConfirmButton" :loading="okLoading" :type="confirmButtonType" size="medium" class="btn-ok" @click="onOK">
           {{ confirmButtonLabel }}
         </el-button>
       </span>
@@ -63,6 +63,10 @@ export default {
     confirmButtonLabel: {
       type: String,
       default: '确 定'
+    },
+    confirmButtonType: {
+      type: String,
+      default: 'primary'
     },
     showCancelButton: {
       type: Boolean,
