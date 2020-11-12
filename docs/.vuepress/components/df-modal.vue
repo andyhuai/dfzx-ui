@@ -137,7 +137,15 @@
                         params: 'closed',
                         describe: '弹窗完全关闭回调',
                         cbparams: '()=>{}',
-                    }
+                    },{
+                        params: 'open',
+                        describe: '弹窗打开回调',
+                        cbparams: '()=>{}',
+                    },{
+                        params: 'opened',
+                        describe: '弹窗完全打开回调',
+                        cbparams: '()=>{}',
+                    },
                 ],
                 visible: false,
                 code: modalCode,

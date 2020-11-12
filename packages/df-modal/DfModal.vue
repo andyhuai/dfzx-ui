@@ -12,6 +12,8 @@
       :show-close="showClose"
       @close="onCancel"
       @closed="closed"
+      @open="open"
+      @opened="opened"
     >
       <slot>此处是内容填充区</slot>
       <span slot="footer" class="dialog-footer">
@@ -93,6 +95,12 @@ export default {
     },
     closed() {
       this.$emit('closed')
+    },
+    open() {
+      this.$emit('open')
+    },
+    opened() {
+      this.$emit('opened')
     }
   }
 }

@@ -12,6 +12,8 @@ export const modalCode =
                 @onOK="onOK"
                 @onCancel="onClose"
                 @closed="closed"
+                @open="open"
+                @opened="opened"
             >
                 <div>我是内容</div>
             </df-modal>
@@ -39,6 +41,12 @@ export const modalCode =
                 closed(){
                     this.$message.info('弹窗关闭完毕了')
                     this.okLoading = false
+                },
+                open(){
+                    this.$message.info('弹窗打开')
+                },
+                opened(){
+                    this.$message.info('弹窗打开完毕了')
                 }
             },
             data() {
