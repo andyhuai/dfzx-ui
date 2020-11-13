@@ -64,7 +64,7 @@
                 apiData: [
                     {
                         params: 'visible',
-                        describe: '弹窗是否显示',
+                        describe: '弹窗是否显示,支持sync',
                         type: 'Boolean',
                         optionValue: 'true, false',
                         defaultValue: '-'
