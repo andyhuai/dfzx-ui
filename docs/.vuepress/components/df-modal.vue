@@ -9,8 +9,8 @@
                     confirm-button-label="确定"
                     :visible="visible"
                     :ok-loading="okLoading"
-                    @onOK="onOK"
-                    @onCancel="onClose"
+                    @on-ok="onOK"
+                    @on-cancel="onClose"
                     @closed="closed"
             >
                 <div>我是内容</div>
