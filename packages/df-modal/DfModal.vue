@@ -14,10 +14,11 @@
       @closed="closed"
       @open="open"
       @opened="opened"
+      class="pub_dialog"
     >
       <slot>此处是内容填充区</slot>
       <span slot="footer" class="dialog-footer">
-        <el-button v-if="showCancelButton" size="medium" @click="onCancel">
+        <el-button v-if="showCancelButton" size="medium" @click="onCancel" style="margin-right: 20px">
           {{ cancelButtonLabel }}
         </el-button>
         <el-button v-if="showConfirmButton" :loading="okLoading" :type="confirmButtonType" size="medium" class="btn-ok" @click="onOK">
@@ -109,12 +110,25 @@ export default {
   .btn-ok {
     margin-left: 30px;
   }
+  .dialog-footer {
+    bottom: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+  }
 </style>
 <style lang="scss">
   .main-modal {
     .el-dialog__header {
       background-color: #409EFF;
       color: white;
+      padding: 10px 20px 10px;
+    }
+    .el-dialog__headerbtn {
+      top: 13px;
     }
     .el-dialog__title {
       color: white;
@@ -132,21 +146,44 @@ export default {
     .el-dialog__footer {
       padding: 0 20px 20px;
     }
-    .el-dialog{
+    //.el-dialog{
+    //  display: flex;
+    //  flex-direction: column;
+    //  margin:0 !important;
+    //  position:absolute;
+    //  top:50%;
+    //  left:50%;
+    //  transform:translate(-50%,-50%);
+    //  /*height:600px;*/
+    //  max-height:calc(100% - 30px);
+    //  max-width:calc(100% - 30px);
+    //}
+    //.el-dialog .el-dialog__body{
+    //  flex:1;
+    //  overflow: auto;
+    //}
+    .pub_dialog {
       display: flex;
-      flex-direction: column;
-      margin:0 !important;
-      position:absolute;
-      top:50%;
-      left:50%;
-      transform:translate(-50%,-50%);
-      /*height:600px;*/
-      max-height:calc(100% - 30px);
-      max-width:calc(100% - 30px);
-    }
-    .el-dialog .el-dialog__body{
-      flex:1;
-      overflow: auto;
+      justify-content: center;
+      align-items: Center;
+      overflow: hidden;
+      .el-dialog {
+        margin: 0 auto !important;
+        height: 90%;
+        overflow: hidden;
+        .el-dialog__body {
+          position: absolute;
+          left: 0;
+          top: 40px;
+          bottom: 0;
+          right: 0;
+          padding: 10px;
+          margin-bottom: 50px;
+          z-index: 1;
+          overflow: hidden;
+          overflow-y: auto;
+        }
+      }
     }
   }
 </style>

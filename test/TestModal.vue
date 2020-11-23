@@ -1,6 +1,47 @@
 <template>
   <div>
-    <df-modal :visible="visible" title="我是标题" @on-ok="visible = !visible" show-close>
+    <df-modal
+      :visible="visible"
+      title="我是标题"
+      show-close
+      @on-ok="visible = !visible"
+      @on-cancel="close"
+    >
+      <div>我是弹窗内容</div>
+      <div>我是弹窗内容</div>
+      <div>我是弹窗内容</div>
+      <div>我是弹窗内容</div>
+      <div>我是弹窗内容</div>
+      <div>我是弹窗内容</div>
+      <div>我是弹窗内容</div>
+      <div>我是弹窗内容</div>
+      <div>我是弹窗内容</div>
+      <div>我是弹窗内容</div>
+      <div>我是弹窗内容</div>
+      <div>我是弹窗内容</div>
+      <div>我是弹窗内容</div>
+      <div>我是弹窗内容</div>
+      <div>我是弹窗内容</div>
+      <div>我是弹窗内容</div>
+      <div>我是弹窗内容</div>
+      <div>我是弹窗内容</div>
+      <div>我是弹窗内容</div>
+      <div>我是弹窗内容</div>
+      <div>我是弹窗内容</div>
+      <div>我是弹窗内容</div>
+      <div>我是弹窗内容</div>
+      <div>我是弹窗内容</div>
+      <div>我是弹窗内容</div>
+      <div>我是弹窗内容</div>
+      <div>我是弹窗内容</div>
+      <div>我是弹窗内容</div>
+      <div>我是弹窗内容</div>
+      <div>我是弹窗内容</div>
+      <div>我是弹窗内容</div>
+      <div>我是弹窗内容</div>
+      <div>我是弹窗内容</div>
+      <div>我是弹窗内容</div>
+      <div>我是弹窗内容</div>
       <div>我是弹窗内容</div>
     </df-modal>
     <el-button @click="visible = !visible">显示弹窗</el-button>
@@ -15,6 +56,11 @@ export default {
   data() {
     return {
       visible: false
+    }
+  },
+  methods: {
+    close() {
+      this.visible = false
     }
   }
 }
