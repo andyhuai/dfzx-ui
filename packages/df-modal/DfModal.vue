@@ -169,19 +169,21 @@ export default {
       overflow: hidden;
       .el-dialog {
         margin: 0 auto !important;
-        height: 90%;
-        overflow: hidden;
+        //max-height: 90%;
+        //overflow: hidden;
         .el-dialog__body {
-          position: absolute;
-          left: 0;
-          top: 40px;
-          bottom: 0;
-          right: 0;
-          padding: 10px;
+          //position: absolute;
+          //left: 0;
+          //top: 40px;
+          //bottom: 0;
+          //right: 0;
+          max-height: calc(100vh - 200px);
+          padding: 20px;
           margin-bottom: 50px;
           z-index: 1;
-          overflow: hidden;
-          overflow-y: auto;
+          //overflow: hidden;
+          //overflow-y: auto;
+          overflow: auto;
         }
       }
     }
