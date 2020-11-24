@@ -1,7 +1,9 @@
 import DfModal from './df-modal/DfModal'
+import DfFormDesign from './df-form/formDesign'
+import DfFormShow from './df-form/showForms'
 import './fonts/font.scss'
 // 存储组件列表
-const components = [DfModal]
+const components = [DfModal, DfFormDesign, DfFormShow]
 
 // 定义 install 方法，接收 Vue 作为参数。如果使用 use 注册插件，则所有的组件都将被注册
 const install = function(Vue, options = { key: '', router: {}}) {
@@ -21,9 +23,9 @@ const install = function(Vue, options = { key: '', router: {}}) {
 if (typeof window !== 'undefined' && window.Vue) {
   install(window.Vue)
 }
-export { DfModal }
+export { DfModal, DfFormDesign, DfFormShow }
 export default {
   // 导出的对象必须具有 install，才能被 Vue.use() 方法安装
-  version: '0.0.9',
+  version: '0.1.3',
   install
 }

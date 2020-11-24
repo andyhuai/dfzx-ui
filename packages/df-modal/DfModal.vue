@@ -164,6 +164,7 @@ export default {
     //}
     .pub_dialog {
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: Center;
       overflow: hidden;

@@ -3,5 +3,15 @@
     "attributes": ["visible", "width", "title", "ok-loading", "show-close", "confirm-button-label", "cancel-button-label", "show-cancel-button", "show-confirm-button"],
     "defaults": ["width"],
     "description": "通用弹出窗."
+  },
+  "df-form-design": {
+    "attributes": ["form-data", "fields"],
+    "defaults": ["fields"],
+    "description": "表单定制."
+  },
+  "df-form-show": {
+    "attributes": ["form-data", "data"],
+    "defaults": ["data"],
+    "description": "表单定制展示."
   }
 }

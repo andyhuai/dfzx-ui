@@ -25,6 +25,12 @@
   "df-modal/closed": {"type": "method", "description": "弹窗完全关闭的回调"},
   "df-modal/show-close": {"type": "boolean", "description": "是否显示右上角的关闭按钮"},
 
+  "df-form-design/form-data": {"type": "object", "description": "表单布局数据,用于上次的保存的数据回显"},
+  "df-form-design/fields": {"type": "array", "description": "表单所有的字段数据"},
+
+  "df-form-show/form-data": {"type": "object", "description": "表单布局数据,用于上次的保存的数据回显"},
+  "df-form-show/data": {"type": "object", "description": "表单初始数据"},
+
   "el-date-picker/picker-options": {
     "options": ["shortcuts", "disabledDate", "firstDayOfWeek", "onPick"],
     "description": "additional options, type is object"
