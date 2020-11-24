@@ -146,22 +146,6 @@ export default {
     .el-dialog__footer {
       padding: 0 20px 20px;
     }
-    //.el-dialog{
-    //  display: flex;
-    //  flex-direction: column;
-    //  margin:0 !important;
-    //  position:absolute;
-    //  top:50%;
-    //  left:50%;
-    //  transform:translate(-50%,-50%);
-    //  /*height:600px;*/
-    //  max-height:calc(100% - 30px);
-    //  max-width:calc(100% - 30px);
-    //}
-    //.el-dialog .el-dialog__body{
-    //  flex:1;
-    //  overflow: auto;
-    //}
     .pub_dialog {
       display: flex;
       flex-direction: column;
@@ -170,20 +154,11 @@ export default {
       overflow: hidden;
       .el-dialog {
         margin: 0 auto !important;
-        //max-height: 90%;
-        //overflow: hidden;
         .el-dialog__body {
-          //position: absolute;
-          //left: 0;
-          //top: 40px;
-          //bottom: 0;
-          //right: 0;
           max-height: calc(100vh - 200px);
           padding: 20px;
-          margin-bottom: 50px;
+          //margin-bottom: 50px;
           z-index: 1;
-          //overflow: hidden;
-          //overflow-y: auto;
           overflow: auto;
         }
       }
