@@ -16,8 +16,10 @@
       @opened="opened"
       class="pub_dialog"
     >
-      <slot>此处是内容填充区</slot>
-      <span slot="footer" class="dialog-footer">
+      <div class="content">
+        <slot>此处是内容填充区</slot>
+      </div>
+      <span class="dialog-footer">
         <el-button v-if="showCancelButton" size="medium" @click="onCancel" style="margin-right: 20px">
           {{ cancelButtonLabel }}
         </el-button>
@@ -111,13 +113,17 @@ export default {
     margin-left: 30px;
   }
   .dialog-footer {
-    bottom: 10px;
     width: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    position: absolute;
+    margin-top: 20px;
+  }
+  .content {
+    overflow: auto;
+    flex: 1;
+    max-height: calc(100vh - 260px);
   }
 </style>
 <style lang="scss">
@@ -137,30 +143,22 @@ export default {
       color: black;
       font-weight: bold;
     }
-    .el-dialog__footer {
-      text-align: center;
-    }
-    .el-dialog__footer {
-      //padding: 0 20px 20px;
-      margin-top: 10px;
-    }
-    .pub_dialog {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: Center;
-      overflow: hidden;
+    .el-dialog__wrapper {
+      //height: 100vh;
+      //width: 100vw;
+      //display: flex;
+      //align-items: center;
+      //justify-content: center;
       .el-dialog {
-        margin: 0 auto !important;
+        //margin: 0 auto !important;
         display: flex;
         flex-direction: column;
         .el-dialog__body {
-          max-height: calc(100vh - 200px);
+          //max-height: calc(100vh - 200px);
           margin: 20px;
           padding: 0;
-          //margin-bottom: 40px;
           z-index: 1;
-          overflow: auto;
+          overflow: hidden;
         }
       }
     }
