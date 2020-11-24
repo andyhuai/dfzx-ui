@@ -140,11 +140,9 @@ export default {
     .el-dialog__footer {
       text-align: center;
     }
-    .el-dialog__body {
-      padding: 10px 15px;
-    }
     .el-dialog__footer {
-      padding: 0 20px 20px;
+      //padding: 0 20px 20px;
+      margin-top: 10px;
     }
     .pub_dialog {
       display: flex;
@@ -154,10 +152,13 @@ export default {
       overflow: hidden;
       .el-dialog {
         margin: 0 auto !important;
+        display: flex;
+        flex-direction: column;
         .el-dialog__body {
           max-height: calc(100vh - 200px);
-          padding: 20px;
-          //margin-bottom: 50px;
+          margin: 20px;
+          padding: 0;
+          //margin-bottom: 40px;
           z-index: 1;
           overflow: auto;
         }
