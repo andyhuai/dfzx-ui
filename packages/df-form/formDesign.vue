@@ -3,7 +3,7 @@
     <el-row :gutter="10">
       <el-col :span="6">
         <Assembly
-          :drag2="drag2"
+          :center-drag="centerDrag"
           @addcom="addcom"
           @setcom="setcom"
           @setdrag="setDrag"
@@ -16,8 +16,8 @@
           ref="forms"
           :from-data="data"
           :form-setting="formSetting"
-          :drag1="drag1"
-          :drag2="drag2"
+          :left-drag="leftDrag"
+          :center-drag="centerDrag"
           :com="com"
           @setdrag="setDrag"
           @reset="reset"
@@ -35,7 +35,7 @@
           :fields="fields"
           :form="formcom"
           :form-setting="formSetting"
-          :drag2="drag2"
+          :center-drag="centerDrag"
           @deleteComponent="deleteComponent"
         />
       </el-col>
@@ -59,6 +59,7 @@ import Assembly from './assembly.vue'
 import Forms from './forms'
 import AttrFrom from './attributeform'
 import ShowFrom from './formShow'
+import Constants from './constants'
 export default {
   name: 'DfFormDesign',
   components: {
@@ -85,9 +86,9 @@ export default {
   data() {
     return {
       // 是否正在拖动左侧的组件 1 没有动  2 已经拖动没有进入中间的界面  3拖动进入中间的页面 4 进入设计页面中的组件
-      drag1: '1',
+      leftDrag: Constants.LEFT_DRAG_IDLE,
       // 是否正在拖动中间的组件 1 没有动  2 已经拖动没有进度其他组件  3 进入其他组件
-      drag2: '1',
+      centerDrag: Constants.CENTER_DRAG_IDLE,
       // 左边 被操作的组件
       com: {},
       // 中间正在被拖动的组件的 如果拖动到垃圾桶 将会删除它
@@ -120,8 +121,8 @@ export default {
   methods: {
     // 左边的全部重置 左边的结束拖动时调用
     reset() {
-      this.drag1 = '1'
-      this.drag2 = '1'
+      this.leftDrag = Constants.LEFT_DRAG_IDLE
+      this.centerDrag = Constants.CENTER_DRAG_IDLE
       // 重置中间的横线
       this.$refs.forms.chonzhihxindex()
     },
@@ -183,7 +184,6 @@ export default {
     downloadVue() {
       const filename = 'hello.vue'
       const text = dow(this.formSetting, this.data)
-      console.log(text)
       this.download(filename, text)
     },
     submit() {

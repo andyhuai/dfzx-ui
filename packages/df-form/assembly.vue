@@ -6,7 +6,7 @@
       <el-col v-for="(item,index) in data" :key="index" :span="12">
         <div
           class="assemblycont_item"
-          draggable
+          draggable="true"
           @click="click(item)"
           @dragstart="dragstart(item)"
           @dragend="dragend"
@@ -44,11 +44,12 @@ import MRadio from './assembly/radio'
 import MCheckbox from './assembly/checkbox'
 import MDivider from './assembly/divider'
 import MP from './assembly/p'
+import Constants from './constants'
 export default {
   components: {
   },
   props: {
-    drag2: {
+    centerDrag: {
       type: String,
       default: () => {
         return '1'
@@ -77,7 +78,7 @@ export default {
   },
   computed: {
     zzcindex() {
-      return this.drag2 === '1' ? -10 : 10
+      return this.centerDrag === Constants.CENTER_DRAG_IDLE ? -10 : 10
     }
   },
   created() {

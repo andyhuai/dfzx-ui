@@ -14,7 +14,7 @@
       @drop="dropfun"
       @dragover.prevent
     />
-    <!-- <span>{{drag1}} {{drag2}} {{startIndex}} {{endIndex}}</span> -->
+    <!-- <span>{{leftDrag}} {{drag2}} {{startIndex}} {{endIndex}}</span> -->
     <div class="forms-content">
       <!-- 从左侧拖动条目到中间时候显示高亮的横线 -->
       <div v-if="hxindex === -1" class="hxdiv" />
@@ -72,6 +72,7 @@
 
 <script>
 import FormItem from './formitem'
+import Constants from './constants'
 export default {
   name: 'Forms',
   components: {
@@ -79,16 +80,16 @@ export default {
   },
   // 是否正在拖动组件
   props: {
-    drag1: {
+    leftDrag: {
       type: String,
       default: () => {
-        return '1'
+        return Constants.LEFT_DRAG_IDLE
       }
     },
-    drag2: {
+    centerDrag: {
       type: String,
       default: () => {
-        return '1'
+        return Constants.CENTER_DRAG_IDLE
       }
     },
     fromData: {
@@ -136,12 +137,12 @@ export default {
   computed: {
     // 中间的大的div
     styleCard: function() {
-      // drag1 是否正在拖动左侧的组件 1 没有动 2 已经拖动没有进入中间的界面  3拖动进入中间的页面 4 进入设计页面中的组件
-      // drag2 是否正在拖动中间的组件 1 没有动  2 已经拖动没有进度其他组件  3 进入其他组件
+      // leftDrag 是否正在拖动左侧的组件 1 没有动 2 已经拖动没有进入中间的界面  3拖动进入中间的页面 4 进入设计页面中的组件
+      // centerDrag 是否正在拖动中间的组件 1 没有动  2 已经拖动没有进度其他组件  3 进入其他组件
       const sty = { background: 'rgb(0,0,0,0)' }
-      if (this.drag1 === '2') {
+      if (this.leftDrag === Constants.LEFT_DRAG_NOT_ENTER_CENTER) {
         // sty.background = 'rgb(0,0,0,0.1)'
-      } else if (this.drag1 === '3') {
+      } else if (this.leftDrag === Constants.LEFT_DRAG_ENTER_CENTER) {
         // sty.background = 'rgb(0,0,0,0.5)'
         // sty["z-index"] = 10;
       }
@@ -149,7 +150,7 @@ export default {
     },
     styleitem: function() {
       const sty = { 'z-index': 100 }
-      // if (this.drag2 == '2') {
+      // if (this.centerDrag == '2') {
       // }
       return sty
     }
@@ -185,8 +186,8 @@ export default {
     // 大div 中滑动时
     dragover() {
       // 中间没有拖动时
-      if (this.drag2 === '1') {
-        this.$emit('setdrag', { type: 'drag1', value: '3' })
+      if (this.centerDrag === Constants.CENTER_DRAG_IDLE) {
+        this.$emit('setdrag', { type: 'leftDrag', value: Constants.CENTER_DRAG_ENTER_ITEM })
         // 一个都没有时 在上面 否则在下面
         if (this.fromData.length === 0) {
           this.hxindex = -1
@@ -198,30 +199,30 @@ export default {
     // 离开大div时
     dragleave() {
       // 当进入到小div中时  或者在操作小div 时 不处理
-      if (this.drag1 === '4' || this.drag2 !== '1') {
+      if (this.leftDrag === Constants.LEFT_DRAG_ENTER_ITEM || this.centerDrag !== Constants.CENTER_DRAG_IDLE) {
         return
       }
-      this.$emit('setdrag', { type: 'drag1', value: '2' })
+      this.$emit('setdrag', { type: 'leftDrag', value: Constants.LEFT_DRAG_NOT_ENTER_CENTER })
       this.hxindex = -3
     },
     // 在div 中放下时
     dropfun() {
       // 不是中间的拖动时 者添加到中间的表单中
-      if (this.drag2 === '1') {
+      if (this.centerDrag === Constants.CENTER_DRAG_IDLE) {
         this.$emit('addcom')
         this.hxindex = -3
       }
     },
     // 在组件中的
     dragstart(index, data) {
-      this.$emit('setdrag', { type: 'drag2', value: '2' })
+      this.$emit('setdrag', { type: 'centerDrag', value: Constants.CENTER_DRAG_NOT_ENTER_ITEM })
       this.$emit('setdelcom', data)
       this.startIndex = index
-      console.log('开始拖动 小div', index)
+      // console.log('开始拖动 小div', index)
     },
     dragend() {
       // 重置数据
-      console.log('中间的end ------------')
+      // console.log('中间的end ------------')
       this.startIndex = -1
       this.endIndex = -1
       this.$emit('reset')
@@ -229,16 +230,16 @@ export default {
     // 在组件中滑动
     dragover2(index) {
       // 处理 从左侧拖动到中间组件的逻辑
-      if (this.drag2 === '1' && this.drag1 !== '1') {
-        this.$emit('setdrag', { type: 'drag1', value: '4' })
+      if (this.centerDrag === Constants.CENTER_DRAG_IDLE && this.leftDrag !== Constants.LEFT_DRAG_IDLE) {
+        this.$emit('setdrag', { type: 'leftDrag', value: Constants.LEFT_DRAG_ENTER_ITEM })
         this.hxindex = index
         // todo 增加横线
       }
       // 中间拖动进入到 中间的其他组件
-      if (this.drag1 === '1' && this.drag2 !== '1') {
+      if (this.leftDrag === Constants.LEFT_DRAG_IDLE && this.centerDrag !== Constants.CENTER_DRAG_IDLE) {
         if (index !== this.startIndex) {
           this.endIndex = index
-          this.$emit('setdrag', { type: 'drag2', value: '3' })
+          this.$emit('setdrag', { type: 'centerDrag', value: Constants.CENTER_DRAG_ENTER_ITEM })
         } else {
           this.endIndex = -1
         }
@@ -249,8 +250,8 @@ export default {
     },
     dropfun2(index) {
       // 中间的进行拖动交换
-      if (this.drag1 === '1') {
-        this.$emit('setdrag', { type: 'drag2', value: '1' })
+      if (this.leftDrag === Constants.LEFT_DRAG_IDLE) {
+        this.$emit('setdrag', { type: 'centerDrag', value: Constants.CENTER_DRAG_IDLE })
         if (
           this.startIndex !== this.endIndex &&
           this.startIndex !== -1 &&
@@ -259,16 +260,16 @@ export default {
           this.$emit('exchange', this.startIndex, this.endIndex)
         }
       }
-      // 从左侧进入到小div中放下  并且没有进入到表格中时 进行对应位置的添加
-      if (this.drag1 === '4') {
+      // 从左侧进入到小div中放下 进行对应位置的添加
+      if (this.leftDrag === Constants.LEFT_DRAG_ENTER_ITEM) {
         this.$emit('addcom', index)
         this.hxindex = -3
       }
     },
     // 选中中间的组件
     clickItem(data) {
-      console.log('data..')
-      console.log(data)
+      // console.log('data..')
+      // console.log(data)
       this.actId = data.id
       this.$emit('setformcom', data)
     },

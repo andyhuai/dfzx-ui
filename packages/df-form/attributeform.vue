@@ -399,15 +399,16 @@
 <script>
 // import MInput from './assembly/input'
 // import MTextarea from './assembly/textarea'
+import Constants from './constants'
 export default {
   components: {
   },
   props: {
     // 中间是否拖动
-    drag2: {
+    centerDrag: {
       type: String,
       default: () => {
-        return '1'
+        return Constants.CENTER_DRAG_IDLE
       }
     },
     // 组件对象
@@ -460,7 +461,7 @@ export default {
       return ret
     },
     zzcindex() {
-      return this.drag2 === '1' ? -10 : 10
+      return this.centerDrag === Constants.CENTER_DRAG_IDLE ? -10 : 10
     }
   },
   watch: {
@@ -471,7 +472,7 @@ export default {
         thiz.formclass = ''
         window.clearTimeout(timer)
       }, 1000)
-      console.log('bianhua')
+      // console.log('bianhua')
     }
   },
   created() {
