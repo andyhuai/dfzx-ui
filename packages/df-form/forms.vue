@@ -55,7 +55,10 @@
                   <FormItem :item="item" :form="from" />
                 </el-form-item>
                 <el-divider v-if="item.type === 'Divider'" :content-position="item.contentPosition">{{ item.text }}</el-divider>
-                <p v-if="item.type === 'p'" :style="{'text-align': item.contentPosition,'font-size':item.fontsize+'px',color:item.textColor}">{{ item.text }}</p>
+                <p
+                  v-if="item.type === 'p'"
+                  :style="{'text-align': item.contentPosition,'font-size':item.fontsize+'px',color:item.textColor}"
+                >{{ item.text }}</p>
               </div>
             </div>
           </el-col>
@@ -281,7 +284,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .elcard {
   position: relative;
   min-height: 600px;
@@ -304,6 +307,9 @@ export default {
   overflow: hidden;
   border-radius: 3px;
   box-sizing: border-box;
+  .el-form-item__label {
+    cursor: move;
+  }
 }
 .form-item2 {
   position: relative;
@@ -336,5 +342,12 @@ export default {
   position: absolute;
   top: 0;
   right: 0;
+}
+</style>
+<style lang="scss">
+.form-item {
+  .el-form-item__label {
+    cursor: move;
+  }
 }
 </style>

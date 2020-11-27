@@ -295,7 +295,7 @@
         </el-form>
       </el-tab-pane>
       <!--  文字和分割线不需要校验规则  -->
-      <el-tab-pane v-show="['Divider','p'].indexOf(form.type) === -1" label="校验设置" name="2">
+      <el-tab-pane label="校验设置" name="2">
         <el-form v-if="form.rules && form.rules.length > 0" :model="form" label-width="80px" size="small">
           <el-form-item label="是否必填">
             <el-switch v-model="form.rules[0].required" active-color="#13ce66" inactive-color="#ff4949" />
