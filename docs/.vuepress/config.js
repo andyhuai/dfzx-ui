@@ -3,6 +3,7 @@ module.exports = {
   title: 'DFZX UI',
   description: 'Inspiration from DFZX',
   head: [['link', { rel: 'icon', href: '/favicon.ico' }]],
+  // theme: 'antdocs',
   themeConfig: {
     nav: [
       { text: 'Home', link: '/' },
@@ -17,7 +18,7 @@ module.exports = {
       {
         title: '组件',
         collapsable: true,
-        children: ['views/components/modal/modal.md', ],
+        children: ['views/components/modal/modal.md', 'views/components/form/form.md'],
       },
     ],
   },

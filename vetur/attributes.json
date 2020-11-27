@@ -29,7 +29,8 @@
   "df-form-design/fields": {"type": "array", "description": "表单所有的字段数据"},
 
   "df-form-show/form-data": {"type": "object", "description": "表单布局数据,用于上次的保存的数据回显"},
-  "df-form-show/data": {"type": "object", "description": "表单初始数据"},
+  "df-form-show/form-value": {"type": "object", "description": "表单初始数据"},
+  "df-form-show/form-ref-name": {"type": "string", "description": "form表单的ref"},
 
   "el-date-picker/picker-options": {
     "options": ["shortcuts", "disabledDate", "firstDayOfWeek", "onPick"],

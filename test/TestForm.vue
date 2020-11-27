@@ -10,7 +10,7 @@ export default {
   components: { DfFormDesign },
   methods: {
     save(data) {
-      console.log(data)
+      console.log(JSON.stringify(data))
     }
   }
 }

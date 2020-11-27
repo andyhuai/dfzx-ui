@@ -14,10 +14,10 @@
       @drop="dropfun"
       @dragover.prevent
     />
-    <!-- <span>{{drag1}} {{drag2}} {{drag3}} {{startIndex}} {{endIndex}}</span> -->
+    <!-- <span>{{drag1}} {{drag2}} {{startIndex}} {{endIndex}}</span> -->
     <div class="forms-content">
       <!-- 从左侧拖动条目到中间时候显示高亮的横线 -->
-      <div v-if="hxindex === -1 && drag3 !== '2'" class="hxdiv" />
+      <div v-if="hxindex === -1" class="hxdiv" />
       <el-form
         :model="from"
         :label-position="formSetting.labelPosition"
@@ -32,7 +32,7 @@
             >
               <div
                 class="form-item2"
-                :style="{...styleitem,border: actid === item.id ? '1px solid red' : ''}"
+                :style="{...styleitem,border: actId === item.id ? '1px solid red' : ''}"
                 draggable="true"
                 @dragstart="dragstart(index,item)"
                 @dragend="dragend(index)"
@@ -43,7 +43,7 @@
                 @click="clickItem(item)"
               >
                 <!-- <div class="form-itemzz"></div> -->
-                <div v-if="hxindex === index && drag3 !== '2'" class="hxdiv" />
+                <div v-if="hxindex === index" class="hxdiv" />
 
                 <el-form-item
                   v-if="['Divider','p'].indexOf(item.type) === -1 "
@@ -61,7 +61,7 @@
           </el-col>
         </el-row>
       </el-form>
-      <div v-if="hxindex === -2 && drag3 !== '2'" class="hxdiv" />
+      <div v-if="hxindex === -2" class="hxdiv" />
     </div>
     <!-- <el-button @click="sub">sub</el-button> -->
   </el-card>
@@ -124,12 +124,10 @@ export default {
       endIndex: -1,
       // 表单的值
       from: {},
-      // 拖动到表格  1 没有  2 有
-      drag3: '1',
       // -3 为没有 -2 为大的div的下面 -1 为大的div的上面  其他为 小组件
       hxindex: -3,
       // 被点击选中的id值
-      actid: '0'
+      actId: '0'
     }
   },
   computed: {
@@ -178,18 +176,6 @@ export default {
       })
       this.from = obj
     },
-    // 拖动到表格
-    setdrag3(data) {
-      this.drag3 = data
-    },
-    // 重置数据
-    centerreset() {
-      this.startIndex = -1
-      this.endIndex = -1
-      this.drag3 = '1'
-      this.hxindex = -3
-      this.actid = 0
-    },
     chonzhihxindex() {
       this.hxindex = -3
     },
@@ -222,7 +208,6 @@ export default {
         this.$emit('addcom')
         this.hxindex = -3
       }
-      this.drag3 = '1'
     },
     // 在组件中的
     dragstart(index, data) {
@@ -236,7 +221,6 @@ export default {
       console.log('中间的end ------------')
       this.startIndex = -1
       this.endIndex = -1
-      this.drag3 = '1'
       this.$emit('reset')
     },
     // 在组件中滑动
@@ -273,17 +257,16 @@ export default {
         }
       }
       // 从左侧进入到小div中放下  并且没有进入到表格中时 进行对应位置的添加
-      if (this.drag1 === '4' && this.drag3 !== '2') {
+      if (this.drag1 === '4') {
         this.$emit('addcom', index)
         this.hxindex = -3
       }
-      this.drag3 = '1'
     },
     // 选中中间的组件
     clickItem(data) {
       console.log('data..')
       console.log(data)
-      this.actid = data.id
+      this.actId = data.id
       this.$emit('setformcom', data)
     },
     // 预览

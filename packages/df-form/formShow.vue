@@ -7,6 +7,7 @@
       :label-position="formData.formSetting.labelPosition"
       :label-width="formData.formSetting.labelWidth+'px'"
       :size="formData.formSetting.formSize"
+      style="overflow: hidden"
     >
       <el-row :gutter="10">
         <el-col v-for="(item,index) in formData.forms" :key="index" :span="item.col">
@@ -39,6 +40,7 @@ export default {
     FormItem
   },
   props: {
+    // 表单布局信息
     formData: {
       type: Object,
       default: () => {
