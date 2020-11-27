@@ -40,16 +40,14 @@
         />
       </el-col>
     </el-row>
-    <el-dialog
+    <df-modal
       v-if="dialogVisible"
       title="预览表单"
       :visible.sync="dialogVisible"
-      width="70%"
-      destroy-on-close
+      @on-ok="submit"
     >
       <show-from ref="showForm" :form-data="{formSetting:formSetting,forms:data}" form-ref-name="showForm" />
-      <el-button @click="submit">保存</el-button>
-    </el-dialog>
+    </df-modal>
   </div>
 </template>
 
@@ -60,9 +58,11 @@ import Forms from './forms'
 import AttrFrom from './attributeform'
 import ShowFrom from './formShow'
 import Constants from './constants'
+import DfModal from '../df-modal/DfModal'
 export default {
   name: 'DfFormDesign',
   components: {
+    DfModal,
     Assembly, Forms, AttrFrom, ShowFrom
   },
   props: {
