@@ -67,7 +67,6 @@ export default {
 
 <style scoped>
 
-</style>
-`
+</style>`
 
 export default { design, show }
