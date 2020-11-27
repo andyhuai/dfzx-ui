@@ -8,11 +8,16 @@ export default class MDivider extends assembly {
     key = 'Divider' + new Date().getTime()
   ) {
     super(type, name, col, key)
-    this.showFrom = ['col', 'text', 'contentposition'
+    this.showFrom = ['col', 'text', 'contentPosition'
     ]
     this.text = ''
-    this.contentposition = 'center'
-    this.rules = [
-    ]
+    this.contentPosition = 'center'
+    // this.rules = []
   }
+  // deleteRules(index) {
+  //   this.rules.splice(index + 1, 1)
+  // }
+  // addRules(data) {
+  //   this.rules.push(data)
+  // }
 }

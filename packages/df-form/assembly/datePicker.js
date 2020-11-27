@@ -9,20 +9,26 @@ export default class MDatePicker extends assembly {
   ) {
     super(type, name, col, key)
     this.showFrom = ['name', 'col', 'key', 'disabled', 'placeholder', 'clearable',
-      'prefixicon', 'datetype', 'startplaceholder', 'endplaceholder', 'rangeseparator'
+      'prefixIcon', 'dateType', 'startPlaceholder', 'endPlaceholder', 'rangeSeparator'
     ]
     this.placeholder = '请输入' + this.name
     this.clearable = false
     this.disabled = false
-    this.prefixicon = 'el-icon-time'
-    this.datetype = 'date'
-    this.startplaceholder = '开始时间'
-    this.endplaceholder = '结束时间'
-    this.rangeseparator = '至'
+    this.prefixIcon = 'el-icon-time'
+    this.dateType = 'date'
+    this.startPlaceholder = '开始时间'
+    this.endPlaceholder = '结束时间'
+    this.rangeSeparator = '至'
 
     // 校验
     this.rules = [
       { required: false, message: '请输入' + this.name, trigger: 'change' }
     ]
+  }
+  deleteRules(index) {
+    this.rules.splice(index + 1, 1)
+  }
+  addRules(data) {
+    this.rules.push(data)
   }
 }

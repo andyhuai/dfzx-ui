@@ -8,18 +8,18 @@ export default class MInput extends assembly {
     key = 'Input' + new Date().getTime()
   ) {
     super(type, name, col, key)
-    this.showFrom = ['name', 'col', 'key', 'minlength', 'maxlength', 'showwordlimit', 'placeholder',
-      'clearable', 'showpassword', 'disabled', 'prefixicon', 'suffixicon', 'prepend', 'append'
+    this.showFrom = ['name', 'col', 'key', 'minlength', 'maxlength', 'showWordLimit', 'placeholder',
+      'clearable', 'showPassword', 'disabled', 'prefixIcon', 'suffixIcon', 'prepend', 'append'
     ]
     this.minlength = 0
     this.maxlength = 100
-    this.showwordlimit = true
+    this.showWordLimit = true
     this.placeholder = '请输入' + this.name
     this.clearable = true
-    this.showpassword	 = false
+    this.showPassword	 = false
     this.disabled = false
-    this.prefixicon = 'el-icon-edit'
-    this.suffixicon = ''
+    this.prefixIcon = 'el-icon-edit'
+    this.suffixIcon = ''
     this.prepend = ''
     this.append = ''
     // 校验
@@ -27,10 +27,10 @@ export default class MInput extends assembly {
       { required: false, message: '请输入' + this.name, trigger: 'change' }
     ]
   }
-  deleterules(index) {
+  deleteRules(index) {
     this.rules.splice(index + 1, 1)
   }
-  addrules(data) {
+  addRules(data) {
     this.rules.push(data)
   }
 }

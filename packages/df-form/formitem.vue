@@ -4,15 +4,15 @@
       v-if="item.type==='Input'"
       v-model="forms[item.key]"
       style="width:100%"
-      :show-word-limit="item.showwordlimit"
+      :show-word-limit="item.showWordLimit"
       :minlength="item.minlength"
       :maxlength="item.maxlength"
       :placeholder="item.placeholder"
       :clearable="item.clearable"
-      :show-password="item.showpassword"
+      :show-password="item.showPassword"
       :disabled="item.disabled"
-      :prefix-icon="item.prefixicon"
-      :suffix-icon="item.suffixicon"
+      :prefix-icon="item.prefixIcon"
+      :suffix-icon="item.suffixIcon"
     >
       <template v-if="item.prepend!==''" slot="prepend">{{ item.prepend }}</template>
       <template v-if="item.append!==''" slot="append">{{ item.append }}</template>
@@ -23,7 +23,7 @@
       style="width:100%"
       type="textarea"
       :rows="item.rows"
-      :show-word-limit="item.showwordlimit"
+      :show-word-limit="item.showWordLimit"
       :minlength="item.minlength"
       :maxlength="item.maxlength"
       :placeholder="item.placeholder"
@@ -37,10 +37,10 @@
       :min="item.min"
       :max="item.max"
       :step="item.step"
-      :step-strictly="item.stepstrictly"
+      :step-strictly="item.stepStrictly"
       :precision="item.precision"
       :disabled="item.disabled"
-      :controls-position="item.controlsposition"
+      :controls-position="item.controlsPosition"
       :placeholder="item.placeholder"
     />
 
@@ -50,11 +50,11 @@
       style="width:100%"
       :placeholder="item.placeholder"
       :multiple="item.multiple"
-      :collapse-tags="item.collapsetags"
+      :collapse-tags="item.collapseTags"
       :disabled="item.disabled"
       :clearable="item.clearable"
       :filterable="item.filterable"
-      :allow-create="item.allowcreate"
+      :allow-create="item.allowCreate"
     >
       <el-option
         v-for="item2 in item.option"
@@ -72,10 +72,10 @@
       v-model="forms[item.key]"
       style="width:100%"
       :disabled="item.disabled"
-      :active-text="item.activetext"
-      :inactive-text="item.inactivetext"
-      :active-color="item.activecolor"
-      :inactive-color="item.inactivecolor"
+      :active-text="item.activeText"
+      :inactive-text="item.inactiveText"
+      :active-color="item.activeColor"
+      :inactive-color="item.inactiveColor"
     />
 
     <el-slider
@@ -86,20 +86,20 @@
       :max="item.max"
       :disabled="item.disabled"
       :step="item.step"
-      :show-stops="item.showstops"
-      :show-input="item.showinput"
+      :show-stops="item.showStops"
+      :show-input="item.showInput"
       :range="item.range"
     />
 
     <el-time-select
-      v-if="item.type==='Timeselect'"
+      v-if="item.type==='TimeSelect'"
       v-model="forms[item.key]"
       style="width:100%"
       :disabled="item.disabled"
       :clearable="item.clearable"
-      :picker-options="item.pickeroptions"
+      :picker-options="item.pickerOptions"
       :placeholder="item.placeholder"
-      :prefix-icon="item.prefixicon"
+      :prefix-icon="item.prefixIcon"
       value-format="HH:mm:ss"
     />
 
@@ -110,30 +110,30 @@
       :disabled="item.disabled"
       :clearable="item.clearable"
       :placeholder="item.placeholder"
-      :prefix-icon="item.prefixicon"
-      :is-range="item.isrange"
-      :start-placeholder="item.startplaceholder"
-      :end-placeholder="item.endplaceholder"
-      :range-separator="item.rangeseparator"
+      :prefix-icon="item.prefixIcon"
+      :is-range="item.isRange"
+      :start-placeholder="item.startPlaceholder"
+      :end-placeholder="item.endPlaceholder"
+      :range-separator="item.rangeSeparator"
       value-format="HH:mm:ss"
     />
 
     <el-date-picker
-      v-if="item.type==='DatePicker' && ( item.datetype === 'date' || item.datetype ==='dates' || item.datetype ==='daterange')"
+      v-if="item.type==='DatePicker' && ( item.dateType === 'date' || item.dateType ==='dates' || item.dateType ==='dateRange')"
       v-model="forms[item.key]"
       style="width:100%"
-      :type="item.datetype"
+      :type="item.dateType"
       :placeholder="item.placeholder"
       :clearable="item.clearable"
       :disabled="item.disabled"
-      :prefix-icon="item.prefixicon"
+      :prefix-icon="item.prefixIcon"
       value-format="yyyy-MM-dd"
-      :start-placeholder="item.startplaceholder"
-      :end-placeholder="item.endplaceholder"
-      :range-separator="item.rangeseparator"
+      :start-placeholder="item.startPlaceholder"
+      :end-placeholder="item.endPlaceholder"
+      :range-separator="item.rangeSeparator"
     />
     <el-date-picker
-      v-if="item.type ==='DatePicker' && item.datetype === 'week'"
+      v-if="item.type ==='DatePicker' && item.dateType === 'week'"
       v-model="forms[item.key]"
       style="width:100%"
       type="week"
@@ -142,52 +142,52 @@
       :placeholder="item.placeholder"
       :clearable="item.clearable"
       :disabled="item.disabled"
-      :prefix-icon="item.prefixicon"
-      :start-placeholder="item.startplaceholder"
-      :end-placeholder="item.endplaceholder"
-      :range-separator="item.rangeseparator"
+      :prefix-icon="item.prefixIcon"
+      :start-placeholder="item.startPlaceholder"
+      :end-placeholder="item.endPlaceholder"
+      :range-separator="item.rangeSeparator"
     />
     <el-date-picker
-      v-if="item.type==='DatePicker' && ( item.datetype === 'month'|| item.datetype === 'monthrange' ) "
+      v-if="item.type==='DatePicker' && ( item.dateType === 'month'|| item.dateType === 'monthRange' ) "
       v-model="forms[item.key]"
       style="width:100%"
-      :type="item.datetype"
+      :type="item.dateType"
       :placeholder="item.placeholder"
       :clearable="item.clearable"
       :disabled="item.disabled"
-      :prefix-icon="item.prefixicon"
+      :prefix-icon="item.prefixIcon"
       value-format="yyyy-MM"
-      :start-placeholder="item.startplaceholder"
-      :end-placeholder="item.endplaceholder"
-      :range-separator="item.rangeseparator"
+      :start-placeholder="item.startPlaceholder"
+      :end-placeholder="item.endPlaceholder"
+      :range-separator="item.rangeSeparator"
     />
     <el-date-picker
-      v-if="item.type === 'DatePicker' && item.datetype === 'year'"
+      v-if="item.type === 'DatePicker' && item.dateType === 'year'"
       v-model="forms[item.key]"
       style="width:100%"
       type="year"
       :placeholder="item.placeholder"
       :clearable="item.clearable"
       :disabled="item.disabled"
-      :prefix-icon="item.prefixicon"
+      :prefix-icon="item.prefixIcon"
       value-format="yyyy"
-      :start-placeholder="item.startplaceholder"
-      :end-placeholder="item.endplaceholder"
-      :range-separator="item.rangeseparator"
+      :start-placeholder="item.startPlaceholder"
+      :end-placeholder="item.endPlaceholder"
+      :range-separator="item.rangeSeparator"
     />
     <el-date-picker
-      v-if="item.type==='DatePicker' && (item.datetype === 'datetime' || item.datetype === 'datetimerange') "
+      v-if="item.type==='DatePicker' && (item.dateType === 'datetime' || item.dateType === 'datetimeRange') "
       v-model="forms[item.key]"
       style="width:100%"
-      :type="item.datetype"
+      :type="item.dateType"
       :placeholder="item.placeholder"
       :clearable="item.clearable"
       :disabled="item.disabled"
-      :prefix-icon="item.prefixicon"
+      :prefix-icon="item.prefixIcon"
       value-format="yyyy-MM-dd HH:mm:ss"
-      :start-placeholder="item.startplaceholder"
-      :end-placeholder="item.endplaceholder"
-      :range-separator="item.rangeseparator"
+      :start-placeholder="item.startPlaceholder"
+      :end-placeholder="item.endPlaceholder"
+      :range-separator="item.rangeSeparator"
     />
 
     <el-radio-group
@@ -196,10 +196,10 @@
       style="width:100%"
       :disabled="item.disabled"
     >
-      <div v-if="item.radiotype==='yuan'">
+      <div v-if="item.radioType==='yuan'">
         <el-radio v-for="(item2,index2) in item.option" :key="index2" :label="item2.value">{{ item2.label }}</el-radio>
       </div>
-      <div v-if="item.radiotype==='button'">
+      <div v-if="item.radioType==='button'">
         <el-radio-button v-for="(item2,index2) in item.option" :key="index2" :label="item2.value">{{ item2.label }}</el-radio-button>
       </div>
     </el-radio-group>
@@ -213,10 +213,10 @@
       :min="item.min"
       :max="item.max"
     >
-      <div v-if="item.checkboxtype=== 'fang'">
+      <div v-if="item.checkboxType=== 'fang'">
         <el-checkbox v-for="(item2,index2) in item.option" :key="index2" :label="item2.value">{{ item2.label }}</el-checkbox>
       </div>
-      <div v-if="item.checkboxtype=== 'button'">
+      <div v-if="item.checkboxType=== 'button'">
         <el-checkbox-button v-for="(item2,index2) in item.option" :key="index2" :label="item2.value">{{ item2.label }}</el-checkbox-button>
       </div>
     </el-checkbox-group>
@@ -226,7 +226,7 @@
 
 <script>
 export default {
-  name: 'Formitem',
+  name: 'FormItem',
   components: {
   },
   props: {

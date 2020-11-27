@@ -1,9 +1,9 @@
 
-export default function gettext(formsetting, data) {
+export default function gettext(formSetting, data) {
   const text = `
 <template>
   <div>
-    <showforms :data="data" @save='save' :defaultData='defaultData'/>
+    <df-form-show :form-data="data" form-ref-name="showForm" :form-data="formData"/>
   </div>
 </template>
   
@@ -12,10 +12,10 @@ export default function gettext(formsetting, data) {
     data() {
       return {
         data: {
-          formsetting: ${JSON.stringify(formsetting)},
+          formSetting: ${JSON.stringify(formSetting)},
           forms: ${JSON.stringify(data)},
         },
-        defaultData: {
+        formData: {
           name:1,
           age:2
         }
@@ -38,6 +38,11 @@ export default function gettext(formsetting, data) {
     margin: 20px auto;
   }
 </style>
-`
+<script>
+import DfFormShow from "./formShow"; 
+export default { 
+components: { DfFormShow }
+ }
+</script>`
   return text
 }

@@ -35,7 +35,6 @@ import MInput from './assembly/input'
 import MTextarea from './assembly/textarea'
 import MInputNumber from './assembly/inputNumber'
 import MSelect from './assembly/select'
-import Mtable from './assembly/tableform'
 import Mswitch from './assembly/switch'
 import MSlider from './assembly/slider'
 import Mtimeselect from './assembly/timeselect'
@@ -68,12 +67,11 @@ export default {
         { type: 'Select', name: '下拉框' },
         { type: 'Switch', name: '开关' },
         { type: 'Slider', name: '滑块' },
-        { type: 'Timeselect', name: '固定时间' },
+        { type: 'TimeSelect', name: '固定时间' },
         { type: 'Timepicker', name: '任意时间' },
         { type: 'DatePicker', name: '日期' },
         { type: 'Radio', name: '单选' },
-        { type: 'Checkbox', name: '多选' },
-        { type: 'TableForm', name: '表格' }
+        { type: 'Checkbox', name: '多选' }
       ]
     }
   },
@@ -103,7 +101,7 @@ export default {
         obj = new Mswitch()
       } else if (data.type === 'Slider') {
         obj = new MSlider()
-      } else if (data.type === 'Timeselect') {
+      } else if (data.type === 'TimeSelect') {
         obj = new Mtimeselect()
       } else if (data.type === 'Timepicker') {
         obj = new MTimepicker()
@@ -113,8 +111,6 @@ export default {
         obj = new MRadio()
       } else if (data.type === 'Checkbox') {
         obj = new MCheckbox()
-      } else if (data.type === 'TableForm') {
-        obj = new Mtable()
       } else if (data.type === 'divider') {
         obj = new MDivider()
       } else if (data.type === 'p') {
@@ -167,7 +163,7 @@ export default {
   margin-bottom: 10px;
   box-sizing: border-box;
   transition: 0.3s;
-  cursor: pointer;
+  /*cursor: pointer;*/
   cursor: move;
   font-size: 14px
 }

@@ -1,6 +1,6 @@
 import DfModal from './df-modal/DfModal'
 import DfFormDesign from './df-form/formDesign'
-import DfFormShow from './df-form/showForms'
+import DfFormShow from './df-form/formShow'
 import './fonts/font.scss'
 // 存储组件列表
 const components = [DfModal, DfFormDesign, DfFormShow]

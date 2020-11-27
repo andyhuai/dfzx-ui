@@ -2,21 +2,21 @@
 import assembly from './assembly'
 export default class MTimepicker extends assembly {
   constructor(
-    type = 'Timeselect',
+    type = 'TimeSelect',
     name = '固定时间',
     col = 24,
-    key = 'Timeselect' + new Date().getTime()
+    key = 'TimeSelect' + new Date().getTime()
   ) {
     super(type, name, col, key)
-    this.showFrom = ['name', 'col', 'key', 'disabled', 'placeholder', 'pickeroptions', 'clearable',
-      'prefixicon'
+    this.showFrom = ['name', 'col', 'key', 'disabled', 'placeholder', 'pickerOptions', 'clearable',
+      'prefixIcon'
     ]
     this.disabled = false
     this.placeholder = '请输入' + this.name
     this.clearable = false
-    this.prefixicon = 'el-icon-time'
+    this.prefixIcon = 'el-icon-time'
 
-    this.pickeroptions = {
+    this.pickerOptions = {
       start: '09:00',
       end: '18:00',
       step: '00:15'
@@ -26,5 +26,11 @@ export default class MTimepicker extends assembly {
     this.rules = [
       { required: false, message: '请输入' + this.name, trigger: 'change' }
     ]
+  }
+  deleteRules(index) {
+    this.rules.splice(index + 1, 1)
+  }
+  addRules(data) {
+    this.rules.push(data)
   }
 }

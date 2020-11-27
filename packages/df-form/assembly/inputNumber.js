@@ -9,19 +9,25 @@ export default class MInputNumber extends assembly {
   ) {
     super(type, name, col, key)
     this.showFrom = ['name', 'col', 'key', 'min', 'max',
-      'step', 'stepstrictly', 'precision', 'disabled', 'controlsposition', 'placeholder'
+      'step', 'stepStrictly', 'precision', 'disabled', 'controlsPosition', 'placeholder'
     ]
     this.min = 0
     this.max = 10000
     this.step = 1
-    this.stepstrictly = false
+    this.stepStrictly = false
     this.precision = 1
     this.disabled = false
-    this.controlsposition = 'right'
+    this.controlsPosition = 'right'
     this.placeholder = '请输入' + this.name
     // 校验
     this.rules = [
       { required: false, message: '请输入' + this.name, trigger: 'change' }
     ]
+  }
+  deleteRules(index) {
+    this.rules.splice(index + 1, 1)
+  }
+  addRules(data) {
+    this.rules.push(data)
   }
 }

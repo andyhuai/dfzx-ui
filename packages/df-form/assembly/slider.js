@@ -9,14 +9,14 @@ export default class MSlider extends assembly {
   ) {
     super(type, name, col, key)
     this.showFrom = ['name', 'col', 'key', 'min', 'max',
-      'disabled', 'step', 'showstops', 'showinput', 'range'
+      'disabled', 'step', 'showStops', 'showInput', 'range'
     ]
     this.min = 0
     this.max = 100
     this.disabled = false
     this.step = 1
-    this.showstops = false
-    this.showinput = false
+    this.showStops = false
+    this.showInput = false
     // 多选
     this.range = false
 
@@ -24,5 +24,11 @@ export default class MSlider extends assembly {
     this.rules = [
       { required: false, message: '请输入' + this.name, trigger: 'change' }
     ]
+  }
+  deleteRules(index) {
+    this.rules.splice(index + 1, 1)
+  }
+  addRules(data) {
+    this.rules.push(data)
   }
 }

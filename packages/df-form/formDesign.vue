@@ -6,8 +6,8 @@
           :drag2="drag2"
           @addcom="addcom"
           @setcom="setcom"
-          @setdrag="setdrag"
-          @deletecom="deletecom"
+          @setdrag="setDrag"
+          @deletecom="deleteComponent"
           @reset="reset"
         />
       </el-col>
@@ -15,29 +15,28 @@
         <Forms
           ref="forms"
           :from-data="data"
-          :formsetting="formsetting"
+          :form-setting="formSetting"
           :drag1="drag1"
           :drag2="drag2"
           :com="com"
-          @setdrag="setdrag"
+          @setdrag="setDrag"
           @reset="reset"
           @setdelcom="setdelcom"
           @addcom="addcom"
-          @jiaohuan="jiaohuan"
+          @exchange="exchange"
           @setformcom="setformcom"
-          @setdialogVisible="setdialogVisible"
+          @setDialogVisible="dialogVisible = true"
           @save="save"
-          @qingkong="qingkong"
-          @downloadvue="downloadvue"
+          @downloadVue="downloadVue"
         />
       </el-col>
       <el-col :span="6">
         <AttrFrom
           :fields="fields"
           :form="formcom"
-          :formsetting="formsetting"
+          :form-setting="formSetting"
           :drag2="drag2"
-          @deletecom="deletecom"
+          @deleteComponent="deleteComponent"
         />
       </el-col>
     </el-row>
@@ -46,19 +45,20 @@
       title="预览表单"
       :visible.sync="dialogVisible"
       width="70%"
-      :before-close="handleClose"
+      destroy-on-close
     >
-      <ShowFrom :data="{formsetting:formsetting,forms:data}" />
+      <show-from ref="showForm" :form-data="{formSetting:formSetting,forms:data}" form-ref-name="showForm" />
+      <el-button @click="submit">保存</el-button>
     </el-dialog>
   </div>
 </template>
 
 <script>
 import dow from './dow'
-import Assembly from './assembly'
+import Assembly from './assembly.vue'
 import Forms from './forms'
 import AttrFrom from './attributeform'
-import ShowFrom from './showForms'
+import ShowFrom from './formShow'
 export default {
   name: 'DfFormDesign',
   components: {
@@ -78,7 +78,8 @@ export default {
           { label: '姓名', value: 'name' },
           { label: '年龄', value: 'age' }
         ]
-      }
+      },
+      required: true
     }
   },
   data() {
@@ -94,10 +95,10 @@ export default {
       // 表单列表
       data: [],
       // 表单设置
-      formsetting: {
+      formSetting: {
         labelPosition: 'left',
-        labelwidth: 80,
-        formsize: 'small'
+        labelWidth: 80,
+        formSize: 'small'
       },
       // 中间被点击的组件
       formcom: {
@@ -109,9 +110,9 @@ export default {
   },
   created() {
     // 当传入props 值时 设置进入当前的data
-    if (this.formdata && this.formdata.formsetting && this.formdata.forms) {
-      this.formsetting = this.formdata.formsetting
-      this.data = this.formdata.forms
+    if (this.formData && this.formData.formSetting && this.formData.forms) {
+      this.formSetting = this.formData.formSetting
+      this.data = this.formData.forms
     }
   },
   mounted() {
@@ -124,15 +125,8 @@ export default {
       // 重置中间的横线
       this.$refs.forms.chonzhihxindex()
     },
-    // 预览的 对话框
-    setdialogVisible() {
-      this.dialogVisible = true
-    },
-    handleClose() {
-      this.dialogVisible = false
-    },
     // 设置拖动状态
-    setdrag(data) {
+    setDrag(data) {
       this[data.type] = data.value
     },
     // 设置操作的组件
@@ -145,16 +139,8 @@ export default {
     setformcom(data) {
       this.formcom = data
     },
-    // 清空
-    qingkong() {
-      this.data = []
-      this.formcom = {
-        showFrom: [],
-        rules: []
-      }
-    },
     // 删除
-    deletecom() {
+    deleteComponent() {
       // 如果删除的是 被选中的 则把 选中的也清空
       if (this.delcom.id === this.formcom.id) {
         this.formcom = {
@@ -173,7 +159,7 @@ export default {
       }
     },
     // 交换位置
-    jiaohuan(start, end) {
+    exchange(start, end) {
       const arr = this.data
       // JSON.parse(JSON.stringify(this.data))
       const aa = arr[start]
@@ -182,7 +168,7 @@ export default {
       this.data = arr
     },
     save() {
-      this.$emit('save', { formsetting: this.formsetting, forms: this.data })
+      this.$emit('save', { formSetting: this.formSetting, forms: this.data })
     },
     // 下载
     download(filename, text) {
@@ -194,11 +180,20 @@ export default {
       element.click()
       document.body.removeChild(element)
     },
-    downloadvue() {
+    downloadVue() {
       const filename = 'hello.vue'
-      const text = dow(this.formsetting, this.data)
+      const text = dow(this.formSetting, this.data)
       console.log(text)
       this.download(filename, text)
+    },
+    submit() {
+      const [validPromise, formData] = this.$refs.showForm.submitForm()
+      validPromise.then(valid => {
+        console.log(valid)
+        console.log(formData)
+      }).catch(e => {
+        console.log(e)
+      })
     }
   }
 }

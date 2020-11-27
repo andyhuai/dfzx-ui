@@ -8,13 +8,19 @@ export default class MP extends assembly {
     key = 'p' + new Date().getTime()
   ) {
     super(type, name, col, key)
-    this.showFrom = ['col', 'text', 'contentposition', 'fontsize', 'textcolor'
+    this.showFrom = ['col', 'text', 'contentPosition', 'fontsize', 'textColor'
     ]
     this.text = '某某表单'
-    this.contentposition = 'center'
+    this.contentPosition = 'center'
     this.fontsize = 18
-    this.textcolor = '#333'
-    this.rules = [
-    ]
+    this.textColor = '#333'
+    // this.rules = [
+    // ]
   }
+  // deleteRules(index) {
+  //   this.rules.splice(index + 1, 1)
+  // }
+  // addRules(data) {
+  //   this.rules.push(data)
+  // }
 }

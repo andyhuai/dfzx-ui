@@ -3,8 +3,8 @@
     <div slot="header" class="clearfix">
       <span>表单设计</span>
       <el-button style="float: right; padding: 3px 0;margin-left:5px" type="text" @click="save">保存</el-button>
-      <el-button style="float: right; padding: 3px 0;margin-left:5px" type="text" @click="yulan">预览</el-button>
-      <el-button style="float: right; padding: 3px 0;margin-left:5px" type="text" @click="()=>this.$emit('downloadvue')">下载源码</el-button>
+      <el-button style="float: right; padding: 3px 0;margin-left:5px" type="text" @click="preview">预览</el-button>
+      <el-button style="float: right; padding: 3px 0;margin-left:5px" type="text" @click="()=>this.$emit('downloadVue')">下载源码</el-button>
     </div>
     <div
       class="elcardzz"
@@ -14,33 +14,39 @@
       @drop="dropfun"
       @dragover.prevent
     />
-    <!-- <span>{{drag1}} {{drag2}} {{drag3}} {{startindex}} {{endindex}}</span> -->
-    <div class="formscont">
+    <!-- <span>{{drag1}} {{drag2}} {{drag3}} {{startIndex}} {{endIndex}}</span> -->
+    <div class="forms-content">
+      <!-- 从左侧拖动条目到中间时候显示高亮的横线 -->
       <div v-if="hxindex === -1 && drag3 !== '2'" class="hxdiv" />
-      <el-form :model="from" :label-position="formsetting.labelPosition" :label-width="formsetting.labelwidth+'px'" :size="formsetting.formsize">
+      <el-form
+        :model="from"
+        :label-position="formSetting.labelPosition"
+        :label-width="formSetting.labelWidth+'px'"
+        :size="formSetting.formSize"
+      >
         <el-row :gutter="10">
           <el-col v-for="(item,index) in fromData" :key="index" :span="item.col">
             <div
-              class="formitem"
-              :style="{'background': startindex === index ? 'rgba(255,0,0,0.2)' : endindex === index ? 'rgba(0,0,255,0.2)' :''}"
+              class="form-item"
+              :style="{'background': startIndex === index ? 'rgba(255,0,0,0.2)' : endIndex === index ? 'rgba(0,0,255,0.2)' :''}"
             >
               <div
-                class="formitem2"
+                class="form-item2"
                 :style="{...styleitem,border: actid === item.id ? '1px solid red' : ''}"
-                draggable
+                draggable="true"
                 @dragstart="dragstart(index,item)"
                 @dragend="dragend(index)"
                 @dragover="dragover2(index)"
                 @dragleave="dragleave2(index)"
                 @drop="dropfun2(index)"
                 @dragover.prevent
-                @click="clickitem(item)"
+                @click="clickItem(item)"
               >
-                <!-- <div class="formitemzz"></div> -->
+                <!-- <div class="form-itemzz"></div> -->
                 <div v-if="hxindex === index && drag3 !== '2'" class="hxdiv" />
 
                 <el-form-item
-                  v-if="['TableForm','Divider','p'].indexOf(item.type) === -1 "
+                  v-if="['Divider','p'].indexOf(item.type) === -1 "
                   v-model="from[item.key]"
                   :label="item.name"
                   :prop="item.key"
@@ -48,41 +54,25 @@
                 >
                   <FormItem :item="item" :form="from" />
                 </el-form-item>
-                <el-divider v-if="item.type === 'Divider'" :content-position="item.contentposition">{{ item.text }}</el-divider>
-                <p v-if="item.type === 'p'" :style="{'text-align': item.contentposition,'font-size':item.fontsize+'px',color:item.textcolor}">{{ item.text }}</p>
-                <el-form-item v-if="item.type==='TableForm'" :label="item.name">
-                  <div>
-                    <tableForm
-                      :com="com"
-                      :data="item"
-                      :drag1="drag1"
-                      :drag2="drag2"
-                      :drag3="drag3"
-                      :startindex="startindex"
-                      @setdrag3="setdrag3"
-                      @chonzhihxindex="chonzhihxindex"
-                      @clickitem="clickitem"
-                    />
-                  </div>
-                </el-form-item>
+                <el-divider v-if="item.type === 'Divider'" :content-position="item.contentPosition">{{ item.text }}</el-divider>
+                <p v-if="item.type === 'p'" :style="{'text-align': item.contentPosition,'font-size':item.fontsize+'px',color:item.textColor}">{{ item.text }}</p>
               </div>
             </div>
           </el-col>
         </el-row>
       </el-form>
-      <div v-if="hxindex== -2 && drag3 !== '2'" class="hxdiv" />
+      <div v-if="hxindex === -2 && drag3 !== '2'" class="hxdiv" />
     </div>
     <!-- <el-button @click="sub">sub</el-button> -->
   </el-card>
 </template>
 
 <script>
-import tableForm from './tableForm'
 import FormItem from './formitem'
 export default {
   name: 'Forms',
   components: {
-    tableForm, FormItem
+    FormItem
   },
   // 是否正在拖动组件
   props: {
@@ -104,19 +94,22 @@ export default {
         return [{ name: '111' }]
       }
     },
-    formsetting: {
+    formSetting: {
       type: Object,
       default: () => {
         return {
           labelPosition: 'left',
-          labelwidth: 80,
-          formsize: 'small'
+          labelWidth: 80,
+          formSize: 'small'
         }
       }
     },
     // 左侧正在被拖动的组件
     com: {
-      type: Object
+      type: Object,
+      default() {
+        return {}
+      }
     },
     height: {
       type: Number,
@@ -127,8 +120,8 @@ export default {
   },
   data() {
     return {
-      startindex: -1,
-      endindex: -1,
+      startIndex: -1,
+      endIndex: -1,
       // 表单的值
       from: {},
       // 拖动到表格  1 没有  2 有
@@ -163,7 +156,7 @@ export default {
   watch: {
     // fromData 变化时初始化表单
     fromData() {
-      this.initfrom()
+      this.initFrom()
     }
     // fromData: {
     //   handler() {
@@ -172,12 +165,11 @@ export default {
     // }
   },
   created() {
-    this.initfrom()
-    console.log(111)
+    this.initFrom()
   },
   methods: {
     // Checkbox 需要提前初始化
-    initfrom() {
+    initFrom() {
       const obj = {}
       this.fromData.map(item => {
         if (item.type === 'Checkbox') {
@@ -192,8 +184,8 @@ export default {
     },
     // 重置数据
     centerreset() {
-      this.startindex = -1
-      this.endindex = -1
+      this.startIndex = -1
+      this.endIndex = -1
       this.drag3 = '1'
       this.hxindex = -3
       this.actid = 0
@@ -236,14 +228,14 @@ export default {
     dragstart(index, data) {
       this.$emit('setdrag', { type: 'drag2', value: '2' })
       this.$emit('setdelcom', data)
-      this.startindex = index
+      this.startIndex = index
       console.log('开始拖动 小div', index)
     },
     dragend() {
       // 重置数据
       console.log('中间的end ------------')
-      this.startindex = -1
-      this.endindex = -1
+      this.startIndex = -1
+      this.endIndex = -1
       this.drag3 = '1'
       this.$emit('reset')
     },
@@ -257,27 +249,27 @@ export default {
       }
       // 中间拖动进入到 中间的其他组件
       if (this.drag1 === '1' && this.drag2 !== '1') {
-        if (index !== this.startindex) {
-          this.endindex = index
+        if (index !== this.startIndex) {
+          this.endIndex = index
           this.$emit('setdrag', { type: 'drag2', value: '3' })
         } else {
-          this.endindex = -1
+          this.endIndex = -1
         }
       }
     },
     dragleave2(index) {
-      this.endindex = -1
+      this.endIndex = -1
     },
     dropfun2(index) {
       // 中间的进行拖动交换
       if (this.drag1 === '1') {
         this.$emit('setdrag', { type: 'drag2', value: '1' })
         if (
-          this.startindex !== this.endindex &&
-          this.startindex !== -1 &&
-          this.endindex !== -1
+          this.startIndex !== this.endIndex &&
+          this.startIndex !== -1 &&
+          this.endIndex !== -1
         ) {
-          this.$emit('jiaohuan', this.startindex, this.endindex)
+          this.$emit('exchange', this.startIndex, this.endIndex)
         }
       }
       // 从左侧进入到小div中放下  并且没有进入到表格中时 进行对应位置的添加
@@ -288,18 +280,15 @@ export default {
       this.drag3 = '1'
     },
     // 选中中间的组件
-    clickitem(data) {
+    clickItem(data) {
       console.log('data..')
       console.log(data)
       this.actid = data.id
       this.$emit('setformcom', data)
     },
-    sub() {
-      alert(JSON.stringify(this.from))
-    },
     // 预览
-    yulan() {
-      this.$emit('setdialogVisible', true)
+    preview() {
+      this.$emit('setDialogVisible', true)
     },
     // 保存
     save() {
@@ -323,17 +312,17 @@ export default {
   bottom: 0;
 }
 
-.formscont {
+.forms-content {
   min-height: 600px;
 }
-.formitem {
+.form-item {
   position: relative;
   padding: 3px;
   overflow: hidden;
   border-radius: 3px;
   box-sizing: border-box;
 }
-.formitem2 {
+.form-item2 {
   position: relative;
   padding: 3px;
   overflow: hidden;
@@ -342,11 +331,11 @@ export default {
   border: 1px dashed #3a88ed;
   cursor: move;
 }
-.formitem2:hover {
+.form-item2:hover {
   border: 1px dashed red;
   transition: 0.5s;
 }
-.formitemzz {
+.form-itemzz {
   position: absolute;
   top: 0;
   left: 0;
@@ -356,7 +345,7 @@ export default {
 .hxdiv {
   width: 100%;
   height: 2px;
-  background: red;
+  background: dodgerblue;
   border-radius: 2px;
 }
 

@@ -4,12 +4,12 @@
     <el-tabs v-model="activeName" :class="formclass" type="card">
       <el-tab-pane label="字段设置" name="1">
         <el-form :model="form" label-width="80px" size="small">
-          <el-form-item v-if="form.showFrom.indexOf('key') !== -1 && fieldsdata.length === 0" label="字段名称">
+          <el-form-item v-if="form.showFrom.indexOf('key') !== -1 && fieldsData.length === 0" label="字段名称">
             <el-input v-model="form.key" />
           </el-form-item>
-          <el-form-item v-if="form.showFrom.indexOf('key') !== -1 && fieldsdata.length > 0" label="字段名称">
+          <el-form-item v-if="form.showFrom.indexOf('key') !== -1 && fieldsData.length > 0" label="字段名称">
             <el-select v-model="form.key" style="width:100%" allow-create filterable>
-              <el-option v-for="(item,index) in fieldsdata" :key="index" :label="item.value" :value="item.value">
+              <el-option v-for="(item,index) in fieldsData" :key="index" :label="item.value" :value="item.value">
                 <span style="float: left">{{ item.value }}</span>
                 <span style="float: right; color: #8492a6; font-size: 13px">{{ item.label }}</span>
               </el-option>
@@ -30,8 +30,8 @@
           <el-form-item v-if="form.showFrom.indexOf('maxlength') !== -1" label="最大长度">
             <el-input-number v-model="form.maxlength" :min="0" />
           </el-form-item>
-          <el-form-item v-if="form.showFrom.indexOf('showwordlimit') !== -1" label="字数统计">
-            <el-switch v-model="form.showwordlimit" active-color="#13ce66" inactive-color="#ff4949" />
+          <el-form-item v-if="form.showFrom.indexOf('showWordLimit') !== -1" label="字数统计">
+            <el-switch v-model="form.showWordLimit" active-color="#13ce66" inactive-color="#ff4949" />
           </el-form-item>
           <el-form-item v-if="form.showFrom.indexOf('placeholder') !== -1" label="占位内容">
             <el-input v-model="form.placeholder" />
@@ -39,17 +39,17 @@
           <el-form-item v-if="form.showFrom.indexOf('clearable') !== -1" label="可否清空">
             <el-switch v-model="form.clearable" active-color="#13ce66" inactive-color="#ff4949" />
           </el-form-item>
-          <el-form-item v-if="form.showFrom.indexOf('showpassword') !== -1" label="密码框">
-            <el-switch v-model="form.showpassword" active-color="#13ce66" inactive-color="#ff4949" />
+          <el-form-item v-if="form.showFrom.indexOf('showPassword') !== -1" label="密码框">
+            <el-switch v-model="form.showPassword" active-color="#13ce66" inactive-color="#ff4949" />
           </el-form-item>
           <el-form-item v-if="form.showFrom.indexOf('disabled') !== -1" label="是否禁用">
             <el-switch v-model="form.disabled" active-color="#13ce66" inactive-color="#ff4949" />
           </el-form-item>
-          <el-form-item v-if="form.showFrom.indexOf('prefixicon') !== -1" label="头部图标">
-            <el-input v-model="form.prefixicon" />
+          <el-form-item v-if="form.showFrom.indexOf('prefixIcon') !== -1" label="头部图标">
+            <el-input v-model="form.prefixIcon" />
           </el-form-item>
-          <el-form-item v-if="form.showFrom.indexOf('suffixicon') !== -1" label="尾部图标">
-            <el-input v-model="form.suffixicon" />
+          <el-form-item v-if="form.showFrom.indexOf('suffixIcon') !== -1" label="尾部图标">
+            <el-input v-model="form.suffixIcon" />
           </el-form-item>
           <el-form-item v-if="form.showFrom.indexOf('prepend') !== -1" label="前置内容">
             <el-input v-model="form.prepend" />
@@ -67,14 +67,14 @@
           <el-form-item v-if="form.showFrom.indexOf('step') !== -1" label="步长">
             <el-input-number v-model="form.step" :precision="2" />
           </el-form-item>
-          <el-form-item v-if="form.showFrom.indexOf('stepstrictly') !== -1" label="只能是步长的倍数">
-            <el-switch v-model="form.stepstrictly" active-color="#13ce66" inactive-color="#ff4949" />
+          <el-form-item v-if="form.showFrom.indexOf('stepStrictly') !== -1" label="只能是步长的倍数">
+            <el-switch v-model="form.stepStrictly" active-color="#13ce66" inactive-color="#ff4949" />
           </el-form-item>
           <el-form-item v-if="form.showFrom.indexOf('precision') !== -1" label="精确小数点后几位">
-            <el-input-number v-model="form.precision" :min="0" :max="5" :step="1" stepstrictly />
+            <el-input-number v-model="form.precision" :min="0" :max="5" :step="1" step-strictly />
           </el-form-item>
-          <el-form-item v-if="form.showFrom.indexOf('controlsposition') !== -1" label="按钮位置">
-            <el-select v-model="form.controlsposition">
+          <el-form-item v-if="form.showFrom.indexOf('controlsPosition') !== -1" label="按钮位置">
+            <el-select v-model="form.controlsPosition">
               <el-option label="两边" value="" />
               <el-option label="右边" value="right" />
             </el-select>
@@ -86,60 +86,60 @@
           <el-form-item v-if="form.showFrom.indexOf('filterable') !== -1" label="可否搜索">
             <el-switch v-model="form.filterable" active-color="#13ce66" inactive-color="#ff4949" />
           </el-form-item>
-          <el-form-item v-if="form.showFrom.indexOf('allowcreate') !== -1 && form.filterable" label="可否创建选项">
-            <el-switch v-model="form.allowcreate" active-color="#13ce66" inactive-color="#ff4949" />
+          <el-form-item v-if="form.showFrom.indexOf('allowCreate') !== -1 && form.filterable" label="可否创建选项">
+            <el-switch v-model="form.allowCreate" active-color="#13ce66" inactive-color="#ff4949" />
           </el-form-item>
-          <el-form-item v-if="form.showFrom.indexOf('collapsetags') !== -1 && form.multiple" label="选择内容折叠">
-            <el-switch v-model="form.collapsetags" active-color="#13ce66" inactive-color="#ff4949" />
+          <el-form-item v-if="form.showFrom.indexOf('collapseTags') !== -1 && form.multiple" label="选择内容折叠">
+            <el-switch v-model="form.collapseTags" active-color="#13ce66" inactive-color="#ff4949" />
           </el-form-item>
 
           <!-- 开关 -->
           <el-form-item v-if="form.showFrom.indexOf('width') !== -1" label="开关宽度">
             <el-input-number v-model="form.width" :min="40" :max="100" :step="1" />
           </el-form-item>
-          <el-form-item v-if="form.showFrom.indexOf('activetext') !== -1" label="打开时的文字描述">
-            <el-input v-model="form.activetext" />
+          <el-form-item v-if="form.showFrom.indexOf('activeText') !== -1" label="打开时的文字描述">
+            <el-input v-model="form.activeText" />
           </el-form-item>
-          <el-form-item v-if="form.showFrom.indexOf('inactivetext') !== -1" label="关闭时的文字描述">
-            <el-input v-model="form.inactivetext" />
+          <el-form-item v-if="form.showFrom.indexOf('inactiveText') !== -1" label="关闭时的文字描述">
+            <el-input v-model="form.inactiveText" />
           </el-form-item>
-          <el-form-item v-if="form.showFrom.indexOf('activecolor') !== -1" label="打开时背景色">
-            <el-color-picker v-model="form.activecolor" show-alpha />
+          <el-form-item v-if="form.showFrom.indexOf('activeColor') !== -1" label="打开时背景色">
+            <el-color-picker v-model="form.activeColor" show-alpha />
           </el-form-item>
-          <el-form-item v-if="form.showFrom.indexOf('inactivecolor') !== -1" label="关闭时背景色">
-            <el-color-picker v-model="form.inactivecolor" show-alpha />
+          <el-form-item v-if="form.showFrom.indexOf('inactiveColor') !== -1" label="关闭时背景色">
+            <el-color-picker v-model="form.inactiveColor" show-alpha />
           </el-form-item>
           <!-- 滑块 -->
-          <el-form-item v-if="form.showFrom.indexOf('showstops') !== -1" label="显示间断">
-            <el-switch v-model="form.showstops" active-color="#13ce66" inactive-color="#ff4949" />
+          <el-form-item v-if="form.showFrom.indexOf('showStops') !== -1" label="显示间断">
+            <el-switch v-model="form.showStops" active-color="#13ce66" inactive-color="#ff4949" />
           </el-form-item>
-          <el-form-item v-if="form.showFrom.indexOf('showinput') !== -1" label="输入框">
-            <el-switch v-model="form.showinput" active-color="#13ce66" inactive-color="#ff4949" />
+          <el-form-item v-if="form.showFrom.indexOf('showInput') !== -1" label="输入框">
+            <el-switch v-model="form.showInput" active-color="#13ce66" inactive-color="#ff4949" />
           </el-form-item>
           <el-form-item v-if="form.showFrom.indexOf('range') !== -1" label="范围选择">
             <el-switch v-model="form.range" active-color="#13ce66" inactive-color="#ff4949" />
           </el-form-item>
 
           <!-- 时间选择器 固定时间 -->
-          <el-form-item v-if="form.showFrom.indexOf('pickeroptions') !== -1" label="开始时间">
+          <el-form-item v-if="form.showFrom.indexOf('pickerOptions') !== -1" label="开始时间">
             <el-time-picker
-              v-model="form.pickeroptions.start"
+              v-model="form.pickerOptions.start"
               placeholder="开始时间"
               value-format="HH:mm"
               format="HH:mm"
             />
           </el-form-item>
-          <el-form-item v-if="form.showFrom.indexOf('pickeroptions') !== -1" label="结束时间">
+          <el-form-item v-if="form.showFrom.indexOf('pickerOptions') !== -1" label="结束时间">
             <el-time-picker
-              v-model="form.pickeroptions.end"
+              v-model="form.pickerOptions.end"
               placeholder="结束时间"
               value-format="HH:mm"
               format="HH:mm"
             />
           </el-form-item>
-          <el-form-item v-if="form.showFrom.indexOf('pickeroptions') !== -1" label="步长">
+          <el-form-item v-if="form.showFrom.indexOf('pickerOptions') !== -1" label="步长">
             <el-time-picker
-              v-model="form.pickeroptions.step"
+              v-model="form.pickerOptions.step"
               :picker-options="{
                 selectableRange: '00:01:00 - 06:00:00'
               }"
@@ -149,25 +149,25 @@
             />
           </el-form-item>
           <!-- 时间选择器 任意时间 -->
-          <el-form-item v-if="form.showFrom.indexOf('isrange') !== -1" label="范围选择">
-            <el-switch v-model="form.isrange" active-color="#13ce66" inactive-color="#ff4949" />
+          <el-form-item v-if="form.showFrom.indexOf('isRange') !== -1" label="范围选择">
+            <el-switch v-model="form.isRange" active-color="#13ce66" inactive-color="#ff4949" />
           </el-form-item>
-          <el-form-item v-if="form.showFrom.indexOf('startplaceholder') !== -1 && form.isrange" label="开始位置占位符">
-            <el-input v-model="form.startplaceholder" />
+          <el-form-item v-if="form.showFrom.indexOf('startPlaceholder') !== -1 && form.isRange" label="开始位置占位符">
+            <el-input v-model="form.startPlaceholder" />
           </el-form-item>
-          <el-form-item v-if="form.showFrom.indexOf('endplaceholder') !== -1 && form.isrange" label="结束位置占位符">
-            <el-input v-model="form.endplaceholder" />
+          <el-form-item v-if="form.showFrom.indexOf('endPlaceholder') !== -1 && form.isRange" label="结束位置占位符">
+            <el-input v-model="form.endPlaceholder" />
           </el-form-item>
-          <el-form-item v-if="form.showFrom.indexOf('rangeseparator') !== -1 && form.isrange" label="分隔符">
-            <el-input v-model="form.rangeseparator" />
+          <el-form-item v-if="form.showFrom.indexOf('rangeSeparator') !== -1 && form.isRange" label="分隔符">
+            <el-input v-model="form.rangeSeparator" />
           </el-form-item>
 
           <!-- 分割线 和 文字 -->
           <el-form-item v-if="form.showFrom.indexOf('text') !== -1" label="文字">
             <el-input v-model="form.text" />
           </el-form-item>
-          <el-form-item v-if="form.showFrom.indexOf('contentposition') !== -1 " label="文字位置">
-            <el-select v-model="form.contentposition" style="width:100%" placeholder="请选择">
+          <el-form-item v-if="form.showFrom.indexOf('contentPosition') !== -1 " label="文字位置">
+            <el-select v-model="form.contentPosition" style="width:100%" placeholder="请选择">
               <el-option label="左" value="left" />
               <el-option label="中" value="center" />
               <el-option label="右" value="right" />
@@ -176,64 +176,79 @@
           <el-form-item v-if="form.showFrom.indexOf('fontsize') !== -1" label="文字大小">
             <el-input-number v-model="form.fontsize" :min="12" :max="100" :step="1" />
           </el-form-item>
-          <el-form-item v-if="form.showFrom.indexOf('textcolor') !== -1" label="文字颜色">
-            <el-color-picker v-model="form.textcolor" show-alpha />
+          <el-form-item v-if="form.showFrom.indexOf('textColor') !== -1" label="文字颜色">
+            <el-color-picker v-model="form.textColor" show-alpha />
           </el-form-item>
 
           <!-- 日期选择 -->
-          <el-form-item v-if="form.showFrom.indexOf('datetype') !== -1 " label="选择单位">
-            <el-select v-model="form.datetype" style="width:100%" placeholder="请选择">
+          <el-form-item v-if="form.showFrom.indexOf('dateType') !== -1 " label="选择单位">
+            <el-select v-model="form.dateType" style="width:100%" placeholder="请选择">
               <el-option label="年月日-单个" value="date" />
               <el-option label="年周-单个" value="week" />
               <el-option label="年月-单个" value="month" />
               <el-option label="年-单个" value="year" />
               <el-option label="多日期" value="dates" />
               <el-option label="年月日时分秒-单个" value="datetime" />
-              <el-option label="年月日时分秒-范围" value="datetimerange" />
-              <el-option label="年月日-范围" value="daterange" />
-              <el-option label="年月-范围" value="monthrange" />
+              <el-option label="年月日时分秒-范围" value="datetimeRange" />
+              <el-option label="年月日-范围" value="dateRange" />
+              <el-option label="年月-范围" value="monthRange" />
             </el-select>
           </el-form-item>
-          <div v-if="form.datetype==='datetimerange'||form.datetype==='daterange'||form.datetype==='monthrange' ">
-            <el-form-item v-if="form.showFrom.indexOf('startplaceholder') !== -1 " label="开始位置占位符">
-              <el-input v-model="form.startplaceholder" />
+          <div v-if="form.dateType === 'datetimeRange' || form.dateType==='dateRange'||form.dateType==='monthRange' ">
+            <el-form-item v-if="form.showFrom.indexOf('startPlaceholder') !== -1 " label="开始位置占位符">
+              <el-input v-model="form.startPlaceholder" />
             </el-form-item>
-            <el-form-item v-if="form.showFrom.indexOf('endplaceholder') !== -1 " label="结束位置占位符">
-              <el-input v-model="form.endplaceholder" />
+            <el-form-item v-if="form.showFrom.indexOf('endPlaceholder') !== -1 " label="结束位置占位符">
+              <el-input v-model="form.endPlaceholder" />
             </el-form-item>
-            <el-form-item v-if="form.showFrom.indexOf('rangeseparator') !== -1 " label="分隔符">
-              <el-input v-model="form.rangeseparator" />
+            <el-form-item v-if="form.showFrom.indexOf('rangeSeparator') !== -1 " label="分隔符">
+              <el-input v-model="form.rangeSeparator" />
             </el-form-item>
           </div>
 
           <!-- 单选 -->
-          <el-form-item v-if="form.showFrom.indexOf('radiotype') !== -1 " label="展示类型">
-            <el-select v-model="form.radiotype" style="width:100%" placeholder="请选择">
+          <el-form-item v-if="form.showFrom.indexOf('radioType') !== -1 " label="展示类型">
+            <el-select v-model="form.radioType" style="width:100%" placeholder="请选择">
               <el-option label="圆圈" value="yuan" />
               <el-option label="按钮" value="button" />
             </el-select>
           </el-form-item>
 
           <!-- 多选 -->
-          <el-form-item v-if="form.showFrom.indexOf('checkboxtype') !== -1 " label="展示类型">
-            <el-select v-model="form.checkboxtype" style="width:100%" placeholder="请选择">
+          <el-form-item v-if="form.showFrom.indexOf('checkboxType') !== -1 " label="展示类型">
+            <el-select v-model="form.checkboxType" style="width:100%" placeholder="请选择">
               <el-option label="方块" value="fang" />
               <el-option label="按钮" value="button" />
             </el-select>
           </el-form-item>
 
           <!-- options -->
-          <el-form-item v-if="form.showFrom.indexOf('datatype') !== -1 " label="数据类型">
-            <el-select v-model="form.datatype" style="width:100%" placeholder="请选择">
+          <el-form-item v-if="form.showFrom.indexOf('dataType') !== -1 " label="数据类型">
+            <el-select v-model="form.dataType" style="width:100%" placeholder="请选择">
               <el-option label="配置数据" value="option" />
               <el-option label="接口数据" value="url" />
             </el-select>
           </el-form-item>
-          <el-form-item v-if="form.showFrom.indexOf('url') !== -1 && form.datatype === 'url' " label="接口地址">
+          <el-form-item v-if="form.showFrom.indexOf('url') !== -1 && form.dataType === 'url' " label="接口地址">
             <el-input v-model="form.url" />
           </el-form-item>
+          <el-form-item v-if="form.showFrom.indexOf('url') !== -1 && form.dataType === 'url' " label="下拉选项label字段">
+            <el-input v-model="form.optionLabelKey" />
+          </el-form-item>
+          <el-form-item v-if="form.showFrom.indexOf('url') !== -1 && form.dataType === 'url' " label="下拉选项value字段">
+            <el-input v-model="form.optionValueKey" />
+          </el-form-item>
+          <el-form-item v-if="form.showFrom.indexOf('url') !== -1 && form.dataType === 'url' " label="数据依赖字段">
+            <el-select v-model="form.relatedField" style="width:100%" allow-create filterable>
+              <el-option v-for="(item,index) in fieldsData" :key="index" :label="item.value" :value="item.value">
+                <span style="float: left">{{ item.value }}</span>
+                <span style="float: right; color: #8492a6; font-size: 13px">{{ item.label }}</span>
+              </el-option>
+            </el-select>
+          </el-form-item>
+
           <el-table
-            v-if="form.showFrom.indexOf('option') !== -1 && form.datatype === 'option' "
+            v-if="form.showFrom.indexOf('option') !== -1 && form.dataType === 'option' "
             border
             :data="form.option"
             class="tb-edit"
@@ -242,7 +257,7 @@
             size="mini"
           >
             <el-table-column label="显示值">
-              <template scope="scope">
+              <template slot-scope="scope">
                 <el-input
                   v-model="scope.row.label"
                   size="mini"
@@ -251,7 +266,7 @@
               </template>
             </el-table-column>
             <el-table-column label="传递值">
-              <template scope="scope">
+              <template slot-scope="scope">
                 <el-input
                   v-model="scope.row.value"
                   size="mini"
@@ -260,7 +275,7 @@
               </template>
             </el-table-column>
             <el-table-column label="操作">
-              <template scope="scope">
+              <template slot-scope="scope">
                 <el-button
                   size="mini"
                   type="danger"
@@ -269,8 +284,7 @@
               </template>
             </el-table-column>
           </el-table>
-          <el-button v-if="form.showFrom.indexOf('option') !== -1 && form.datatype === 'option' " size="mini" style="margin-top:10px" @click="addoption">增加选项</el-button>
-
+          <el-button v-if="form.showFrom.indexOf('option') !== -1 && form.dataType === 'option' " size="mini" style="margin-top:10px" @click="addOption">增加选项</el-button>
           <!-- 表格 -->
           <el-form-item v-if="form.showFrom.indexOf('border') !== -1" label="是否边框">
             <el-switch v-model="form.border" active-color="#13ce66" inactive-color="#ff4949" />
@@ -278,10 +292,10 @@
           <el-form-item v-if="form.showFrom.indexOf('stripe') !== -1" label="斑马纹">
             <el-switch v-model="form.stripe" active-color="#13ce66" inactive-color="#ff4949" />
           </el-form-item>
-
         </el-form>
       </el-tab-pane>
-      <el-tab-pane label="校验设置" name="2">
+      <!--  文字和分割线不需要校验规则  -->
+      <el-tab-pane v-show="['Divider','p'].indexOf(form.type) === -1" label="校验设置" name="2">
         <el-form v-if="form.rules.length > 0" :model="form" label-width="80px" size="small">
           <el-form-item label="是否必填">
             <el-switch v-model="form.rules[0].required" active-color="#13ce66" inactive-color="#ff4949" />
@@ -300,7 +314,7 @@
             size="mini"
           >
             <el-table-column label="正则表达式">
-              <template scope="scope">
+              <template slot-scope="scope">
                 <el-input
                   v-model="scope.row.pattern"
                   disabled
@@ -310,7 +324,7 @@
               </template>
             </el-table-column>
             <el-table-column label="错误提示">
-              <template scope="scope">
+              <template slot-scope="scope">
                 <el-input
                   v-model="scope.row.message"
                   size="mini"
@@ -320,11 +334,11 @@
               </template>
             </el-table-column>
             <el-table-column label="操作">
-              <template scope="scope">
+              <template slot-scope="scope">
                 <el-button
                   size="mini"
                   type="danger"
-                  @click="form.deleterules(scope.$index)"
+                  @click="form.deleteRules(scope.$index)"
                 >删除</el-button>
               </template>
             </el-table-column>
@@ -334,19 +348,19 @@
         </el-form>
       </el-tab-pane>
       <el-tab-pane label="表单设置" name="3">
-        <el-form :model="formsetting" label-width="80px" size="small">
+        <el-form :model="formSetting" label-width="80px" size="small">
           <el-form-item label="对齐方式">
-            <el-select v-model="formsetting.labelPosition" style="width:100%" placeholder="请选择">
+            <el-select v-model="formSetting.labelPosition" style="width:100%" placeholder="请选择">
               <el-option label="左对齐" value="left" />
               <el-option label="右对齐" value="right" />
               <el-option label="顶对齐" value="top" />
             </el-select>
           </el-form-item>
           <el-form-item label="字段宽度">
-            <el-input-number v-model="formsetting.labelwidth" style="width:100%" :min="50" :max="200" :step="1" stepstrictly />
+            <el-input-number v-model="formSetting.labelWidth" style="width:100%" :min="50" :max="200" :step="1" step-strictly />
           </el-form-item>
           <el-form-item label="组件尺寸">
-            <el-select v-model="formsetting.formsize" style="width:100%" placeholder="请选择">
+            <el-select v-model="formSetting.formSize" style="width:100%" placeholder="请选择">
               <el-option label="大" value="medium" />
               <el-option label="中" value="small" />
               <el-option label="小" value="mini" />
@@ -364,7 +378,6 @@
       title="正则校验"
       :visible.sync="dialogVisible"
       width="30%"
-      :before-close="handleClose"
     >
 
       <el-form :model="regular" label-width="120px" size="small">
@@ -377,7 +390,7 @@
       </el-form>
       <span slot="footer" class="dialog-footer">
         <el-button size="small" @click="dialogVisible = false">取 消</el-button>
-        <el-button type="primary" size="small" @click="saveregular">确 定</el-button>
+        <el-button type="primary" size="small" @click="saveRegular">确 定</el-button>
       </span>
     </el-dialog>
   </el-card>
@@ -409,8 +422,11 @@ export default {
         }
       }
     },
-    formsetting: {
-      type: Object
+    formSetting: {
+      type: Object,
+      default() {
+        return {}
+      }
     },
     // 传递过来的可选字段
     fields: {
@@ -435,7 +451,7 @@ export default {
     }
   },
   computed: {
-    fieldsdata() {
+    fieldsData() {
       let ret = []
       // 是数组
       if (Array.isArray(this.fields)) {
@@ -463,50 +479,47 @@ export default {
   methods: {
     drop() {
       this.lj = false
-      this.$emit('deletecom')
+      this.$emit('deleteComponent')
     },
     dragover() {
       this.lj = true
-      console.log('滑动时')
+      // console.log('滑动时')
     },
     dragleave() {
       this.lj = false
-      console.log('出去了')
+      // console.log('出去了')
     },
     // 删除选项
     handleDelete(index) {
       this.form.deleteOption(index)
     },
-    addoption() {
+    addOption() {
       this.form.addoption()
     },
-    saveregular() {
+    saveRegular() {
       const { pattern, message } = this.regular
       if (!pattern || !message) {
         this.$message.error('请填写完正则表达式及未通过表达式时的提示信息!')
         return
       }
-      let isreg
+      let isReg
       try {
         // eslint-disable-next-line no-eval
-        isreg = eval(pattern) instanceof RegExp
+        isReg = eval(pattern) instanceof RegExp
       } catch (e) {
-        isreg = false
+        isReg = false
       }
-      if (isreg === true) {
+      if (isReg === true) {
         const aa = pattern.substring(1, pattern.length - 1)
         const data = {
           'pattern': new RegExp(aa),
           'message': message
         }
-        this.form.addrules(data)
+        this.form.addRules(data)
         this.dialogVisible = false
       } else {
         this.$message.error('您的正则表达式不正确!')
       }
-    },
-    handleClose() {
-      this.dialogVisible = false
     }
   }
 }

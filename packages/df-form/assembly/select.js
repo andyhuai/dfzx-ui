@@ -8,18 +8,19 @@ export default class MSelect extends assembly {
     key = 'Select' + new Date().getTime()
   ) {
     super(type, name, col, key)
-    this.showFrom = ['name', 'col', 'key', 'multiple', 'collapsetags', 'placeholder',
-      'clearable', 'disabled', 'filterable', 'allowcreate', 'datatype', 'option', 'url'
+    this.showFrom = ['name', 'col', 'key', 'multiple', 'collapseTags', 'placeholder',
+      'clearable', 'disabled', 'filterable', 'allowCreate', 'dataType', 'option', 'url',
+      'optionLabelKey', 'optionValueKey', 'relatedField'
     ]
     this.multiple = false
-    this.collapsetags = false
+    this.collapseTags = false
     this.disabled = false
     this.filterable = false
-    this.allowcreate = false
+    this.allowCreate = false
     this.placeholder = '请输入' + this.name
     this.clearable = true
     // 数据类型 option 和 url
-    this.datatype = 'option'
+    this.dataType = 'option'
     // 请求接口
     this.url = ''
     // 下拉框的选项
@@ -38,8 +39,13 @@ export default class MSelect extends assembly {
     }]
     // 校验
     this.rules = [
-      { required: false, message: '请输入' + this.name, trigger: 'change' }
+      { required: false, message: '请选择' + this.name, trigger: 'change' }
     ]
+    // 请求接口回来数据字段
+    this.optionLabelKey = ''
+    this.optionValueKey = ''
+    // 请求是否关联其他字段值
+    this.relatedField = ''
   }
 
   deleteOption(index) {
@@ -47,5 +53,11 @@ export default class MSelect extends assembly {
   }
   addoption() {
     this.option.push({ label: '新的选择', value: 'newValue' })
+  }
+  deleteRules(index) {
+    this.rules.splice(index + 1, 1)
+  }
+  addRules(data) {
+    this.rules.push(data)
   }
 }

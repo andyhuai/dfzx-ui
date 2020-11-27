@@ -9,16 +9,16 @@ export default class MCheckbox extends assembly {
   ) {
     super(type, name, col, key)
     this.showFrom = ['name', 'col', 'key',
-      'disabled', 'checkboxtype', 'datatype', 'option', 'url', 'min', 'max'
+      'disabled', 'checkboxType', 'dataType', 'option', 'url', 'min', 'max'
     ]
     // button
-    this.checkboxtype = 'fang'
+    this.checkboxType = 'fang'
     this.disabled = false
     this.min = 0
     this.max = 2
 
     // 数据类型 option 和 url
-    this.datatype = 'option'
+    this.dataType = 'option'
     // 请求接口
     this.url = ''
     // 下拉框的选项
@@ -46,5 +46,12 @@ export default class MCheckbox extends assembly {
   }
   addoption() {
     this.option.push({ label: '新的选择', value: 'newValue' })
+  }
+
+  deleteRules(index) {
+    this.rules.splice(index + 1, 1)
+  }
+  addRules(data) {
+    this.rules.push(data)
   }
 }
