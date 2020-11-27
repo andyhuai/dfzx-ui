@@ -65,7 +65,7 @@
                 justify-content: center;
                 align-items: center;
                 box-sizing: border-box;
-                padding: 4%;
+                padding: 2%;
                 border-bottom: 1px solid #ddd;
             }
         }

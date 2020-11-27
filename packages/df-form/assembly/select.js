@@ -17,7 +17,7 @@ export default class MSelect extends assembly {
     this.disabled = false
     this.filterable = false
     this.allowCreate = false
-    this.placeholder = '请输入' + this.name
+    this.placeholder = '请选择' + this.name
     this.clearable = true
     // 数据类型 option 和 url
     this.dataType = 'option'

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="width: 100%">
     <el-row :gutter="10">
       <el-col :span="6">
         <Assembly

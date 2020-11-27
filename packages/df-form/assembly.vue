@@ -156,6 +156,7 @@ export default {
 
 .assemblycont_item{
   background: #f1f2fd;
+  border: 1px solid #f1f2fd;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -168,7 +169,6 @@ export default {
   font-size: 14px
 }
 .assemblycont_item:hover{
-
   border: 1px dashed #579ff8;
   color: #579ff8;
   transition: 0.3s;
