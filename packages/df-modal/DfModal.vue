@@ -121,7 +121,8 @@ export default {
     margin-top: 20px;
   }
   .content {
-    overflow: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
     flex: 1;
     max-height: calc(100vh - 260px);
   }
