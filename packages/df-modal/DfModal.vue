@@ -16,7 +16,7 @@
       @opened="opened"
       class="pub_dialog"
     >
-      <div class="content">
+      <div :class=" fullscreen ? 'content-fullscreen' : 'content' ">
         <slot>此处是内容填充区</slot>
       </div>
       <span class="dialog-footer">
@@ -125,6 +125,10 @@ export default {
     overflow-y: auto;
     flex: 1;
     max-height: calc(100vh - 260px);
+  }
+  .content-fullscreen {
+    @extend .content;
+    max-height: 100% ;
   }
 </style>
 <style lang="scss">
