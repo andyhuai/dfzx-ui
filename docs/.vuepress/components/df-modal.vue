@@ -122,6 +122,18 @@ export default {
           type: 'Boolean',
           optionValue: 'true, false',
           defaultValue: 'true'
+        }, {
+          params: 'confirm-button-disabled',
+          describe: '确定按钮是否禁用',
+          type: 'Boolean',
+          optionValue: 'true, false',
+          defaultValue: 'false'
+        }, {
+          params: 'cancel-button-disabled',
+          describe: '取消按钮是否禁用',
+          type: 'Boolean',
+          optionValue: 'true, false',
+          defaultValue: 'false'
         }
       ],
       methodData: [
