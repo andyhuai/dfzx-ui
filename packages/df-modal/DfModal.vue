@@ -26,6 +26,7 @@
         <el-button v-if="showConfirmButton" :disabled="confirmButtonDisabled" :loading="okLoading" :type="confirmButtonType" size="medium" class="btn-ok" @click="onOK">
           {{ confirmButtonLabel }}
         </el-button>
+        <slot name="footer" />
       </span>
     </el-dialog>
   </div>

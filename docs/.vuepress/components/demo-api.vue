@@ -28,6 +28,20 @@
                     label="默认值">
             </el-table-column>
         </el-table>
+      <el-table
+          v-else-if="type === 'slot'"
+          :data="apiData"
+          style="width: 100%">
+        <el-table-column
+            prop="name"
+            label="slot名称"
+            width="140">
+        </el-table-column>
+        <el-table-column
+            prop="describe"
+            label="说明">
+        </el-table-column>
+      </el-table>
         <el-table
                 v-else
                 :data="apiData"

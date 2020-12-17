@@ -22,7 +22,8 @@
     </demo-code>
 
     <demo-api title="属性" type="attr" :api-data="apiData"/>
-    <demo-api title="方法" type="method" :api-data="methodData"/>
+    <demo-api title="事件" type="method" :api-data="methodData"/>
+    <demo-api title="slot" type="slot" :api-data="slotData"/>
   </div>
 </template>
 
@@ -158,6 +159,12 @@ export default {
           describe: '弹窗完全打开回调',
           cbparams: '()=>{}',
         },
+      ],
+      slotData: [
+        {
+          name: 'footer',
+          describe: '弹窗底部信息,可以插入额外内容'
+        }
       ],
       visible: false,
       code: modalCode,
