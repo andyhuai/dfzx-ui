@@ -9,18 +9,18 @@
       destroy-on-close
       :fullscreen="fullscreen"
       :top="top"
-      :show-close="showClose"
+      :show-close="showClose && !okLoading"
+      class="pub_dialog"
       @close="onCancel"
       @closed="closed"
       @open="open"
       @opened="opened"
-      class="pub_dialog"
     >
       <div :class=" fullscreen ? 'content-fullscreen' : 'content' ">
         <slot>此处是内容填充区</slot>
       </div>
       <span class="dialog-footer">
-        <el-button v-if="showCancelButton" size="medium" @click="onCancel" style="margin-right: 20px">
+        <el-button v-if="showCancelButton" :disabled="okLoading" size="medium" style="margin-right: 20px" @click="onCancel">
           {{ cancelButtonLabel }}
         </el-button>
         <el-button v-if="showConfirmButton" :disabled="confirmButtonDisabled" :loading="okLoading" :type="confirmButtonType" size="medium" class="btn-ok" @click="onOK">

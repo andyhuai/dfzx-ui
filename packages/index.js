@@ -26,6 +26,6 @@ if (typeof window !== 'undefined' && window.Vue) {
 export { DfModal, DfFormDesign, DfFormShow }
 export default {
   // 导出的对象必须具有 install，才能被 Vue.use() 方法安装
-  version: '0.2.8',
+  version: '0.2.9',
   install
 }
